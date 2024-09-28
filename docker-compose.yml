@@ -1,0 +1,26 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api
+    command: uvicorn api.app:app --host 127.0.0.1 --port 8000
+    ports:
+      - "8000:8000"
+    networks:
+      - cmoos_network
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dashboard
+    command: python3 dashboard/dashboard.py  # Modify with the correct file path
+    ports:
+      - "8050:8050"
+    networks:
+      - cmoos_network
+
+networks:
+  cmoos_network:
+    external: true

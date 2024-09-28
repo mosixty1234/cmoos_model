@@ -3,6 +3,7 @@ from pydantic import BaseModel, Field
 import numpy as np
 import joblib
 import logging
+from fastapi import Response
 from typing import List
 
 # Initialize FastAPI app with basic metadata
@@ -34,25 +35,32 @@ class MaintenanceIssue(BaseModel):
 def read_root():
     return {"message": "API is up and running!"}
 
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon():
+    return Response(status_code=204)
+
 # Predicting maintenance issue
 @app.post("/predict/")
 def predict_issue(issue: MaintenanceIssue):
     logger.info(f"Received issue description: {issue.description}")
-    
+
     try:
         # TF-IDF transformation
         description_vec = tfidf.transform([issue.description]).toarray()
-        
+
         # Scale numeric features
         numeric_features = np.array([[issue.severity, issue.total_downtime, issue.oee]])
         numeric_features_scaled = scaler.transform(numeric_features)
-        
+
+        # Combine inputs into a single array for the model
+        combined_input = np.hstack((description_vec, numeric_features_scaled))
+
         # Predict timeframe
-        prediction = model.predict([description_vec, numeric_features_scaled])
-        
+        prediction = model.predict(combined_input)
+
         # Extract the first value from the prediction (assuming it's an array)
         predicted_time = float(prediction[0])
-        
+
         # Apply frequency-based weight to the prediction
         frequency_weight = 1 + (issue.issue_frequency / 10)
         weighted_time = predicted_time * frequency_weight
@@ -61,7 +69,7 @@ def predict_issue(issue: MaintenanceIssue):
         recommended_solution = f"Based on the predicted time of {predicted_time:.2f} hours, consider allocating resources for efficient resolution."
 
         logger.info(f"Prediction successful: Predicted time: {predicted_time}, Weighted time: {weighted_time}")
-        
+
         return {
             "predicted_time": predicted_time,
             "weighted_time": weighted_time,
@@ -76,26 +84,29 @@ def predict_issue(issue: MaintenanceIssue):
 @app.post("/predict_batch/")
 def predict_batch(issues: List[MaintenanceIssue]):
     predictions = []
-    
+
     for issue in issues:
         try:
             # TF-IDF transformation
             description_vec = tfidf.transform([issue.description]).toarray()
-            
+
             # Scale numeric features
             numeric_features = np.array([[issue.severity, issue.total_downtime, issue.oee]])
             numeric_features_scaled = scaler.transform(numeric_features)
-            
+
+            # Combine inputs into a single array for the model
+            combined_input = np.hstack((description_vec, numeric_features_scaled))
+
             # Predict timeframe
-            prediction = model.predict([description_vec, numeric_features_scaled])
-            
+            prediction = model.predict(combined_input)
+
             # Extract the first value from the prediction
             predicted_time = float(prediction[0])
-            
+
             # Apply frequency-based weight
             frequency_weight = 1 + (issue.issue_frequency / 10)
             weighted_time = predicted_time * frequency_weight
-            
+
             # Generate recommended solution
             recommended_solution = f"Allocate resources for a predicted time of {predicted_time:.2f} hours."
 
@@ -112,8 +123,9 @@ def predict_batch(issues: List[MaintenanceIssue]):
                 "description": issue.description,
                 "error": "Prediction failed, check input data"
             })
-    
+
     return {"predictions": predictions}
 
-# To run the API, use the following command:
-# uvicorn app:app --host 0.0.0.0 --port 8000
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000)
