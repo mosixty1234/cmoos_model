@@ -16,4 +16,4 @@ EXPOSE 8000
 EXPOSE 8050
 
 # Start both FastAPI and Dash apps
-CMD ["sh", "-c", "uvicorn api.app:app --host 127.0.0.1 --port 8000 & python3 dashboard/dashboard.py --host 127.0.0.1 --port 8050"]
+CMD ["sh", "-c", "uvicorn app:app --host 127.0.0.1 --port 8000 & python3 dashboard.py --host 127.0.0.1 --port 8050"]
