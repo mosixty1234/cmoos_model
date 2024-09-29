@@ -11,3 +11,108 @@
 2024-09-29 02:33:44,748 - app - INFO - Prediction successful: Predicted time: 0.9265369772911072, Weighted time: 1.3898054659366608
 2024-09-29 02:35:52,126 - app - INFO - Received issue description: Motor Failure
 2024-09-29 02:35:52,240 - app - INFO - Prediction successful: Predicted time: 1.0510562658309937, Weighted time: 1.5765843987464905
+2024-09-29 14:32:43,852 - app - INFO - Received issue description: Overheating
+2024-09-29 14:32:44,152 - app - INFO - Prediction successful: Predicted time: 0.9265369772911072, Weighted time: 1.3898054659366608
+2024-09-29 14:33:56,197 - app - INFO - Received issue description: Motor Failure
+2024-09-29 14:33:56,330 - app - INFO - Prediction successful: Predicted time: 1.0510562658309937, Weighted time: 1.5765843987464905
+2024-09-29 14:34:05,630 - app - INFO - Received issue description: Motor Failure
+2024-09-29 14:34:05,796 - app - INFO - Prediction successful: Predicted time: 1.3683645725250244, Weighted time: 2.0525468587875366
+2024-09-29 14:39:58,299 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 14:40:37,424 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 14:41:07,376 - app - INFO - Processing issue: Motor Failure
+2024-09-29 14:41:07,518 - app - INFO - Prediction successful: 1.0510562658309937 hours
+2024-09-29 14:41:25,951 - app - INFO - Processing issue: Overheating
+2024-09-29 14:41:26,050 - app - INFO - Prediction successful: 0.9265369772911072 hours
+2024-09-29 14:41:28,781 - app - INFO - Processing issue: Overheating
+2024-09-29 14:41:28,850 - app - INFO - Prediction successful: 0.9265369772911072 hours
+2024-09-29 14:41:29,894 - app - INFO - Processing issue: Overheating
+2024-09-29 14:41:30,000 - app - INFO - Prediction successful: 0.9265369772911072 hours
+2024-09-29 14:41:51,951 - app - INFO - Processing issue: Leakage
+2024-09-29 14:41:52,065 - app - INFO - Prediction successful: 0.7430464625358582 hours
+2024-09-29 14:42:07,987 - app - INFO - Processing issue: Sensor issue
+2024-09-29 14:42:08,098 - app - INFO - Prediction successful: 0.8595077991485596 hours
+2024-09-29 14:42:41,055 - app - INFO - Processing issue: Sensor Issue
+2024-09-29 14:42:41,145 - app - INFO - Prediction successful: 1.2516311407089233 hours
+2024-09-29 14:43:13,626 - app - INFO - Processing issue: Sensor Issue
+2024-09-29 14:43:13,710 - app - INFO - Prediction successful: 2.0964534282684326 hours
+2024-09-29 14:45:43,796 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 14:48:18,815 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 14:48:50,142 - app - INFO - Processing issue: Motor Failure
+2024-09-29 14:48:50,304 - app - INFO - Prediction successful: 1.0510562658309937 hours
+2024-09-29 14:52:58,835 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 14:53:24,595 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 14:53:40,983 - app - INFO - Processing issue: Overheating 
+2024-09-29 14:53:41,151 - app - INFO - Prediction successful: 0.9265369772911072 hours
+2024-09-29 15:01:08,007 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 15:01:35,125 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 15:01:56,772 - app - INFO - Processing issue: Motor Failure
+2024-09-29 15:01:56,972 - app - INFO - Prediction successful: 1.0510562658309937 hours
+2024-09-29 15:06:03,849 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 15:06:23,366 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 15:06:46,183 - app - INFO - Processing issue: Overheating
+2024-09-29 15:06:46,348 - app - INFO - Prediction successful: 0.9265369772911072 hours
+2024-09-29 15:07:34,402 - app - INFO - Processing issue: Overheating 
+2024-09-29 15:07:34,529 - app - INFO - Prediction successful: 0.9265369772911072 hours
+2024-09-29 15:07:43,029 - app - INFO - Processing issue: Motor Failure
+2024-09-29 15:07:43,128 - app - INFO - Prediction successful: 1.0510562658309937 hours
+2024-09-29 15:07:46,680 - app - INFO - Processing issue: Motor Failure
+2024-09-29 15:07:46,761 - app - INFO - Prediction successful: 1.0510562658309937 hours
+2024-09-29 15:08:07,568 - app - INFO - Processing issue: Motor Failure
+2024-09-29 15:08:07,676 - app - INFO - Prediction successful: 1.0510562658309937 hours
+2024-09-29 15:10:08,040 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 15:10:20,735 - app - INFO - Processing issue: Overheating 
+2024-09-29 15:10:21,001 - app - INFO - Prediction successful: 0.9265369772911072 hours
+2024-09-29 15:39:04,166 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 15:39:15,140 - app - INFO - Processing issue: Motor Failure
+2024-09-29 15:39:15,512 - app - INFO - Prediction successful: 1.0510562658309937 hours
+2024-09-29 16:07:00,392 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 16:07:28,993 - app - INFO - Processing issue: Motor Failure
+2024-09-29 16:07:29,147 - app - INFO - Prediction successful: 1.0510562658309937 hours
+2024-09-29 16:07:58,768 - app - INFO - Processing issue: Pump failure
+2024-09-29 16:07:58,830 - app - INFO - Prediction successful: 0.938016951084137 hours
+2024-09-29 16:19:17,252 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 16:19:43,314 - app - INFO - Processing issue: Overheating 
+2024-09-29 16:19:43,564 - app - INFO - Prediction successful: 1.8482738733291626 hours
+2024-09-29 16:22:49,167 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 16:23:41,772 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 16:29:45,417 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 16:30:09,144 - app - INFO - Processing issue: Pump failure
+2024-09-29 16:30:09,274 - app - INFO - Prediction successful: 1.0408239364624023 hours
+2024-09-29 16:39:06,455 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 16:39:21,548 - app - INFO - Processing issue: Overheating
+2024-09-29 16:39:21,720 - app - INFO - Prediction successful: 0.9265369772911072 hours
+2024-09-29 16:44:50,597 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 16:45:05,934 - app - INFO - Processing issue: Overheating
+2024-09-29 16:45:06,064 - app - INFO - Prediction successful: 0.9265369772911072 hours
+2024-09-29 16:49:01,052 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 16:49:20,973 - app - INFO - Processing issue: Overheating
+2024-09-29 16:49:21,130 - app - INFO - Prediction successful: 0.9265369772911072 hours
+2024-09-29 16:49:43,416 - app - INFO - Processing issue: Overheating
+2024-09-29 16:49:43,495 - app - INFO - Prediction successful: 1.2220818996429443 hours
+2024-09-29 16:50:24,869 - app - INFO - Processing issue: Overheating
+2024-09-29 16:50:24,959 - app - INFO - Prediction successful: 1.8333491086959839 hours
+2024-09-29 16:50:56,931 - app - INFO - Processing issue: Overheating
+2024-09-29 16:50:57,024 - app - INFO - Prediction successful: 1.3130217790603638 hours
+2024-09-29 16:51:04,473 - app - INFO - Processing issue: Overheating
+2024-09-29 16:51:04,555 - app - INFO - Prediction successful: 1.1374553442001343 hours
+2024-09-29 16:51:36,112 - app - INFO - Processing issue: Pump failure
+2024-09-29 16:51:36,204 - app - INFO - Prediction successful: 1.1087956428527832 hours
+2024-09-29 16:51:48,737 - app - INFO - Processing issue: Pump failure
+2024-09-29 16:51:48,820 - app - INFO - Prediction successful: 2.8343799114227295 hours
+2024-09-29 17:03:58,885 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 17:04:15,055 - app - INFO - Processing issue: Overheating
+2024-09-29 17:04:15,321 - app - INFO - Prediction successful: 0.9265369772911072 hours
+2024-09-29 17:07:29,826 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 17:07:45,835 - app - INFO - Processing issue: Pump failure
+2024-09-29 17:07:46,049 - app - INFO - Prediction successful: 0.938016951084137 hours
+2024-09-29 17:10:36,014 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 17:11:13,219 - app - INFO - Processing issue: Overheating
+2024-09-29 17:11:13,375 - app - INFO - Prediction successful: 0.9265369772911072 hours
+2024-09-29 17:18:04,935 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 17:24:25,100 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 17:30:23,717 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 17:32:41,498 - app - INFO - Model, scaler, and TFIDF loaded successfully on startup.
+2024-09-29 17:51:53,479 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-29 17:54:23,020 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-29 17:58:05,350 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-29 18:01:42,881 - app - INFO - Model, scaler, and TFIDF loaded successfully.
