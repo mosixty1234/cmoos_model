@@ -1,0 +1,13 @@
+2024-09-29 02:19:01,476 - app - ERROR - Failed to load model or assets: name 'load_model' is not defined
+2024-09-29 02:23:08,061 - app - ERROR - Failed to load model or assets: name 'load_model' is not defined
+2024-09-29 02:25:43,462 - app - INFO - Received issue description: Overheating
+2024-09-29 02:25:43,462 - app - ERROR - Error during prediction: 'str' object has no attribute 'predict'
+2024-09-29 02:25:58,856 - app - INFO - Received issue description: Overheating 
+2024-09-29 02:25:58,857 - app - ERROR - Error during prediction: 'str' object has no attribute 'predict'
+2024-09-29 02:28:13,839 - app - ERROR - Failed to load model or assets: name 'load_model' is not defined
+2024-09-29 02:31:02,659 - app - INFO - Received issue description: Overheating
+2024-09-29 02:31:03,126 - app - INFO - Prediction successful: Predicted time: 0.9265369772911072, Weighted time: 1.3898054659366608
+2024-09-29 02:33:44,599 - app - INFO - Received issue description: Overheating
+2024-09-29 02:33:44,748 - app - INFO - Prediction successful: Predicted time: 0.9265369772911072, Weighted time: 1.3898054659366608
+2024-09-29 02:35:52,126 - app - INFO - Received issue description: Motor Failure
+2024-09-29 02:35:52,240 - app - INFO - Prediction successful: Predicted time: 1.0510562658309937, Weighted time: 1.5765843987464905
