@@ -75,7 +75,7 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 app.layout = dbc.Container(
     [
-        html.H1("✨ Maintenance Issue Prediction Dashboard ✨", style=header_style),
+        html.H1("✨ CMOOS Maintenance Issue Prediction Dashboard ✨", style=header_style),
 
         dbc.Row(
             [
@@ -95,7 +95,7 @@ app.layout = dbc.Container(
                             html.Label("OEE (0 to 1)", style=label_style),
                             dcc.Input(id='oee', type='number', value=0.75, min=0, max=1, step=0.01, style=input_style),
 
-                            html.Button('Submit', id='submit-val', n_clicks=0, style=button_style, className='hover-button'),
+                            html.Button('Submit prediction', id='submit-val', n_clicks=0, style=button_style, className='hover-button'),
                         ], style=container_style)
                     ],
                     width=6,
