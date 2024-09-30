@@ -116,3 +116,214 @@
 2024-09-29 17:54:23,020 - app - INFO - Model, scaler, and TFIDF loaded successfully.
 2024-09-29 17:58:05,350 - app - INFO - Model, scaler, and TFIDF loaded successfully.
 2024-09-29 18:01:42,881 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-29 18:19:59,929 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-29 18:20:12,930 - app - INFO - Processing issue: Motor Failure
+2024-09-29 18:20:13,250 - app - INFO - Prediction successful: 1.0510562658309937 hours
+2024-09-30 02:14:40,691 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 02:15:30,455 - app - INFO - Processing issue: Motor Failure
+2024-09-30 02:15:30,610 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 02:16:28,201 - app - INFO - Processing issue: Pump failure
+2024-09-30 02:16:28,322 - app - INFO - Prediction successful: 3.1452763080596924 hours
+2024-09-30 02:23:49,513 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 02:27:41,709 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 02:29:50,812 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 02:29:58,693 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 02:30:39,963 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 02:35:11,711 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 02:35:22,930 - app - INFO - Processing issue: Motor Failure
+2024-09-30 02:35:23,214 - app - INFO - Prediction successful: 1.0998162031173706 hours, MAE: 0.0998162031173706, R²: nan
+2024-09-30 02:37:25,650 - app - INFO - Processing issue: Motor Failure
+2024-09-30 02:37:25,738 - app - INFO - Prediction successful: 1.0998162031173706 hours, MAE: 0.0998162031173706, R²: nan
+2024-09-30 02:40:03,227 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 02:40:12,754 - app - INFO - Processing issue: Pump failure
+2024-09-30 02:40:12,948 - app - INFO - Prediction successful: 1.0285218954086304 hours, MAE: 0.02852189540863037, R²: nan
+2024-09-30 02:44:23,124 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 02:44:33,862 - app - INFO - Processing issue: Pump failure
+2024-09-30 02:44:34,068 - app - INFO - Prediction successful: 1.0285218954086304 hours, MAE: 0.02852189540863037, R²: nan
+2024-09-30 02:44:40,711 - app - INFO - Processing issue: Pump failure
+2024-09-30 02:44:40,792 - app - INFO - Prediction successful: 1.0285218954086304 hours, MAE: 0.02852189540863037, R²: nan
+2024-09-30 02:45:29,870 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 02:45:49,504 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 02:46:05,215 - app - INFO - Processing issue: Motor Failure
+2024-09-30 02:46:05,408 - app - INFO - Prediction successful: 1.0998162031173706 hours, MAE: 0.0998162031173706, R²: nan
+2024-09-30 02:51:36,843 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 02:52:02,988 - app - INFO - Processing issue: Motor Failure
+2024-09-30 02:52:03,179 - app - INFO - Prediction successful: 1.0998162031173706 hours, MAE: 0.0998162031173706, R²: nan
+2024-09-30 02:52:40,254 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 02:53:24,848 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 02:53:46,609 - app - INFO - Processing issue: Motor Failure
+2024-09-30 02:53:46,772 - app - INFO - Prediction successful: 1.0998162031173706 hours, MAE: 0.0998162031173706, R²: nan
+2024-09-30 02:56:26,262 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 02:56:38,234 - app - INFO - Processing issue: Pump failure
+2024-09-30 02:56:38,411 - app - INFO - Prediction successful: 1.0285218954086304 hours, MAE: 0.02852189540863037, R²: nan
+2024-09-30 02:58:42,796 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 03:00:56,198 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 03:02:24,869 - app - INFO - Processing issue: Pump failure
+2024-09-30 03:02:25,037 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 03:04:58,083 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 03:05:14,379 - app - INFO - Processing issue: Motor Failure
+2024-09-30 03:05:14,583 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 03:07:00,383 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 03:07:24,683 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 03:07:47,849 - app - INFO - Processing issue: Motor Failure
+2024-09-30 03:07:47,999 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 03:12:21,865 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 03:12:34,997 - app - INFO - Processing issue: Pump failure
+2024-09-30 03:12:35,146 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 03:12:53,751 - app - INFO - Processing issue: Motor Failure
+2024-09-30 03:12:53,845 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 03:15:33,009 - app - INFO - Processing issue: Motor
+2024-09-30 03:15:33,085 - app - INFO - Prediction successful: 1.0724632740020752 hours
+2024-09-30 03:22:59,642 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 03:23:08,639 - app - INFO - Processing issue: Motor Failure
+2024-09-30 03:23:08,842 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 03:26:23,016 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 03:26:32,649 - app - INFO - Processing issue: Pump failure
+2024-09-30 03:26:32,923 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 03:34:41,141 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 03:35:09,378 - app - INFO - Processing issue: Motor Failure
+2024-09-30 03:35:09,538 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 03:35:33,237 - app - INFO - Processing issue: Motor Failure
+2024-09-30 03:35:33,336 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 03:36:30,076 - app - INFO - Processing issue: Motor Failure
+2024-09-30 03:36:30,166 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 03:36:39,479 - app - INFO - Processing issue: Motor
+2024-09-30 03:36:39,566 - app - INFO - Prediction successful: 1.0724632740020752 hours
+2024-09-30 03:38:48,172 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 03:40:17,913 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 03:40:35,411 - app - INFO - Processing issue: Motor Failure
+2024-09-30 03:40:35,586 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 03:40:53,750 - app - INFO - Processing issue: Motor Failure
+2024-09-30 03:40:53,831 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 03:46:43,310 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 03:47:06,967 - app - INFO - Processing issue: Pump failure
+2024-09-30 03:47:07,273 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 03:47:18,321 - app - INFO - Processing issue: Pump failure
+2024-09-30 03:47:18,453 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 03:47:39,382 - app - INFO - Processing issue: Motor
+2024-09-30 03:47:39,518 - app - INFO - Prediction successful: 1.0724632740020752 hours
+2024-09-30 03:47:53,844 - app - INFO - Processing issue: Motor
+2024-09-30 03:47:53,983 - app - INFO - Prediction successful: 1.0724632740020752 hours
+2024-09-30 03:48:20,069 - app - INFO - Processing issue: Motor
+2024-09-30 03:48:20,135 - app - INFO - Prediction successful: 1.6633716821670532 hours
+2024-09-30 03:48:34,455 - app - INFO - Processing issue: Motor
+2024-09-30 03:48:34,541 - app - INFO - Prediction successful: 1.6633716821670532 hours
+2024-09-30 03:48:54,899 - app - INFO - Processing issue: Motor Failure
+2024-09-30 03:48:54,999 - app - INFO - Prediction successful: 1.8630162477493286 hours
+2024-09-30 14:06:18,239 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 14:06:48,010 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:06:48,290 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:07:10,651 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:07:10,768 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:11:03,681 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 14:11:11,838 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:11:12,122 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:11:15,818 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:11:15,887 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:14:25,260 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 14:14:50,726 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 14:14:57,050 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:14:57,274 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:15:06,043 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:15:06,125 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:19:23,789 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 14:19:36,347 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:19:36,521 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:19:41,207 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:19:41,285 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:21:34,283 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 14:21:54,277 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:21:54,412 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:27:54,828 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 14:28:09,335 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:28:09,504 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:33:05,239 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 14:33:31,360 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:33:31,498 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:33:55,282 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:33:55,345 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:37:44,833 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 14:37:58,847 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:37:59,146 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:39:53,867 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:39:53,973 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:40:49,434 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 14:41:05,780 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:41:06,074 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:44:09,725 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 14:47:49,301 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 14:48:05,868 - app - INFO - Processing issue: Pump failure
+2024-09-30 14:48:06,140 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 14:48:27,126 - app - INFO - Processing issue: Pump failure
+2024-09-30 14:48:27,255 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 14:48:34,029 - app - INFO - Processing issue: Pump failure
+2024-09-30 14:48:34,155 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 14:48:35,598 - app - INFO - Processing issue: Pump failure
+2024-09-30 14:48:35,738 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 14:48:36,676 - app - INFO - Processing issue: Pump failure
+2024-09-30 14:48:36,738 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 14:48:37,656 - app - INFO - Processing issue: Pump failure
+2024-09-30 14:48:37,738 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 14:48:38,664 - app - INFO - Processing issue: Pump failure
+2024-09-30 14:48:38,738 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 14:48:39,673 - app - INFO - Processing issue: Pump failure
+2024-09-30 14:48:39,754 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 14:48:40,567 - app - INFO - Processing issue: Pump failure
+2024-09-30 14:48:40,704 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 14:48:41,464 - app - INFO - Processing issue: Pump failure
+2024-09-30 14:48:41,605 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 14:48:42,405 - app - INFO - Processing issue: Pump failure
+2024-09-30 14:48:42,531 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 14:49:02,734 - app - INFO - Processing issue: Pump failure
+2024-09-30 14:49:02,808 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 14:49:20,877 - app - INFO - Processing issue: Pump failure
+2024-09-30 14:49:20,968 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 14:49:31,934 - app - INFO - Processing issue: Pump failure
+2024-09-30 14:49:32,001 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 14:49:34,593 - app - INFO - Processing issue: Pump failure
+2024-09-30 14:49:34,684 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 14:49:48,638 - app - INFO - Processing issue: Pump failure
+2024-09-30 14:49:48,733 - app - INFO - Prediction successful: 1.0285218954086304 hours
+2024-09-30 14:52:59,473 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 14:53:15,689 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:53:15,819 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:53:42,461 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:53:42,603 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:54:00,951 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:54:01,032 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:54:11,762 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:54:11,899 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:54:19,122 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:54:19,248 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:54:20,816 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:54:20,948 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:54:22,047 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:54:22,114 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:54:23,681 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:54:23,748 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:57:00,516 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 14:57:18,415 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:57:18,719 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 14:57:31,116 - app - INFO - Processing issue: Motor Failure
+2024-09-30 14:57:31,185 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 15:00:23,985 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 15:00:33,969 - app - INFO - Processing issue: Motor Failure
+2024-09-30 15:00:34,190 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 15:00:42,792 - app - INFO - Processing issue: Motor Failure
+2024-09-30 15:00:42,873 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 15:03:49,142 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 15:04:03,942 - app - INFO - Processing issue: Motor Failure
+2024-09-30 15:04:04,175 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 15:04:19,051 - app - INFO - Processing issue: Motor Failure
+2024-09-30 15:04:19,125 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 15:06:57,209 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 15:07:11,198 - app - INFO - Processing issue: Motor Failure
+2024-09-30 15:07:11,347 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 15:10:06,449 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 15:11:48,185 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 15:12:01,381 - app - INFO - Processing issue: Motor Failure
+2024-09-30 15:12:01,559 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 15:16:51,458 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 15:17:11,833 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 15:17:50,217 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 15:20:23,525 - app - INFO - Model, scaler, and TFIDF loaded successfully.
