@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from keras.models import Model
+from keras.models import Model, load_model
 from keras.layers import Input, Dense, concatenate
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
@@ -203,15 +203,12 @@ except Exception as e:
     logger.error(f"An error occurred during SHAP explanation: {e}")
     raise
 
-# Save model and scalers
+# Save Model, Scaler, and TF-IDF objects
 try:
-    with open("model.h5", "wb") as model_file:
-        pickle.dump(model, model_file)
-    with open("scaler.pkl", "wb") as scaler_file:
-        pickle.dump(scaler, scaler_file)
-    with open("tfidf.pkl", "wb") as tfidf_file:
-        pickle.dump(tfidf, tfidf_file)
-    logger.info("Model, scaler, and TF-IDF vectorizer saved successfully.")
+    model.save('issue_predictor_model.keras')  # Save as .keras
+    pickle.dump(tfidf, open('tfidf.pkl', 'wb'))
+    pickle.dump(scaler, open('scaler.pkl', 'wb'))
+    logger.info("Model and associated objects saved successfully.")
 except Exception as e:
-    logger.error(f"An error occurred while saving the model or preprocessors: {e}")
+    logger.error(f"Error saving model or objects: {e}")
     raise

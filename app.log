@@ -331,3 +331,11 @@
 2024-09-30 15:20:47,057 - app - INFO - Processing issue: Motor Failure
 2024-09-30 15:20:47,358 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 4.0, 'total_downtime': 1.0, 'oee': 0.75, 'issue_frequency': 5}, Predicted Time: 1.10
 2024-09-30 15:20:47,358 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 15:33:26,005 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 15:33:43,155 - app - INFO - Processing issue: Motor Failure
+2024-09-30 15:33:43,423 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 4.0, 'total_downtime': 1.0, 'oee': 0.75, 'issue_frequency': 5}, Predicted Time: 1.10
+2024-09-30 15:33:43,423 - app - INFO - Prediction successful: 1.0998162031173706 hours
+2024-09-30 15:40:22,414 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 15:42:05,266 - app - INFO - Processing issue: Motor Failure
+2024-09-30 15:42:05,422 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 4.0, 'total_downtime': 1.0, 'oee': 0.75, 'issue_frequency': 5}, Predicted Time: 1.45
+2024-09-30 15:42:05,422 - app - INFO - Prediction successful: 1.4477827548980713 hours
