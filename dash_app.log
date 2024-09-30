@@ -1,0 +1,6 @@
+2024-09-30 15:20:35,310 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-09-30 15:20:47,041 - INFO - User submitted issue: Motor Failure, Severity: 4, Downtime: 1, OEE: 0.75
+2024-09-30 15:20:47,048 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-09-30 15:20:47,358 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 306
+2024-09-30 15:20:48,425 - INFO - Prediction successful!

@@ -1,6 +1,4 @@
-# fastapi_app.py
-
-from fastapi import FastAPI, HTTPException, Response
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 import numpy as np
 import pickle
@@ -8,19 +6,19 @@ import logging
 from tensorflow.keras.models import load_model
 from fastapi.middleware.cors import CORSMiddleware
 
-# Initialize FastAPI app with metadata
+# Initialize FastAPI app
 app = FastAPI(
     title="Maintenance Issue Prediction API",
     description="Predicts time to resolve maintenance issues based on description, severity, and other features.",
     version="2.0.0"
 )
 
-# Load environment variables (production settings)
+# Load environment variables (paths)
 MODEL_PATH = 'issue_predictor_model.keras'
 SCALER_PATH = 'scaler.pkl'
 TFIDF_PATH = 'tfidf.pkl'
 
-# CORS middleware (for local development, adjust for production)
+# Setup CORS middleware for development
 origins = ["http://127.0.0.1:8080"]
 app.add_middleware(
     CORSMiddleware,
@@ -30,7 +28,7 @@ app.add_middleware(
     allow_headers=["Authorization", "Content-Type"],
 )
 
-# Setup enhanced logging: log to file for production
+# Setup logging
 logging.basicConfig(
     filename="app.log",
     filemode="a",
@@ -39,7 +37,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Preload model and assets during startup
+# Load model and preprocessing assets on startup
 @app.on_event("startup")
 async def startup_event():
     global model, scaler, tfidf
@@ -50,7 +48,7 @@ async def startup_event():
         logger.error(f"Error during startup: {e}")
         raise HTTPException(status_code=500, detail="Failed to load assets.")
 
-# Load model and other assets
+# Load model and assets
 def load_assets():
     try:
         model = load_model(MODEL_PATH)
@@ -63,12 +61,7 @@ def load_assets():
         logger.error(f"Error loading assets: {e}")
         raise HTTPException(status_code=500, detail="Failed to load assets.")
 
-# Root endpoint to check API status
-@app.get("/")
-async def read_root():
-    return {"message": "API is up and running!"}
-
-# Health check to monitor API readiness
+# Health check endpoint
 @app.get("/health/")
 async def health_check():
     try:
@@ -77,11 +70,6 @@ async def health_check():
     except Exception as e:
         logger.error(f"Health check failed: {e}")
         raise HTTPException(status_code=500, detail="API health check failed")
-
-# Fix for favicon.ico error
-@app.get("/favicon.ico", include_in_schema=False)
-async def favicon():
-    return Response(status_code=204)
 
 # Request validation using Pydantic
 class MaintenanceIssue(BaseModel):
@@ -96,34 +84,37 @@ class MaintenanceIssue(BaseModel):
 async def predict_issue(issue: MaintenanceIssue):
     try:
         logger.info(f"Processing issue: {issue.description}")
-        
+
         # Transform input description using the TFIDF vectorizer
         description_vec = tfidf.transform([issue.description]).toarray()
-        
+
         # Combine numeric features and scale them
         numeric_features = np.array([[issue.severity, issue.total_downtime, issue.oee]])
         numeric_features_scaled = scaler.transform(numeric_features)
 
         # Model prediction
         prediction = model.predict([description_vec, numeric_features_scaled])
-        
+
         if prediction is None or len(prediction) == 0:
             raise ValueError("Model returned an empty prediction")
 
         predicted_time = float(prediction[0][0])
 
+        # Log the input and output of the prediction
+        logger.info(f"Input: {issue.dict()}, Predicted Time: {predicted_time:.2f}")
+
         # Apply weighting based on issue frequency
         frequency_weight = 1 + (issue.issue_frequency / 10)
         weighted_time = predicted_time * frequency_weight
 
-        # Generate recommendation
-        recommendation = generate_recommendation(issue, predicted_time)
+        # Generate enhanced recommendation
+        recommendation = generate_recommendation(issue, predicted_time, weighted_time)
 
         logger.info(f"Prediction successful: {predicted_time} hours")
 
         return {
-            "predicted_time": predicted_time,
-            "weighted_time": weighted_time,
+            "predicted_time": round(predicted_time, 2),
+            "weighted_time": round(weighted_time, 2),
             "frequency_weight": frequency_weight,
             "recommended_solution": recommendation
         }
@@ -134,27 +125,33 @@ async def predict_issue(issue: MaintenanceIssue):
         logger.error(f"Prediction error: {e}")
         raise HTTPException(status_code=500, detail="Prediction failed")
 
-# Generate recommendation based on input data
-def generate_recommendation(issue: MaintenanceIssue, predicted_time: float) -> str:
+# Improved recommendation based on severity, OEE, and downtime
+def generate_recommendation(issue: MaintenanceIssue, predicted_time: float, weighted_time: float) -> str:
     if issue.severity >= 8:
         return (
-            f"High severity ({issue.severity}/10). Immediate attention required, "
-            f"predicted resolution time: {predicted_time:.2f} hours. "
-            "Assign senior staff to prevent extended downtime."
+            f"The issue has a high severity level ({issue.severity}/10), which demands immediate attention. "
+            f"The predicted resolution time is approximately {predicted_time:.2f} hours, and considering past occurrences, "
+            f"the weighted resolution time is {weighted_time:.2f} hours. It is recommended to assign experienced personnel to "
+            "mitigate the potential downtime."
         )
     elif issue.oee < 0.7:
         return (
-            f"Low OEE ({issue.oee:.2f}). Consider preventive maintenance in addition to "
-            f"resolving the issue in {predicted_time:.2f} hours. "
-            "Improving efficiency could reduce future downtimes."
+            f"Low OEE detected ({issue.oee:.2f}), which could indicate inefficiencies in the system. "
+            f"The issue should be resolved within {predicted_time:.2f} hours, but to prevent future downtimes, consider "
+            "implementing preventive maintenance measures alongside the repair."
         )
     elif issue.total_downtime > 5:
         return (
-            f"Significant downtime ({issue.total_downtime:.2f} hours). Allocate resources efficiently "
-            f"to resolve within {predicted_time:.2f} hours and minimize impact."
+            f"The system has already experienced significant downtime ({issue.total_downtime:.2f} hours). "
+            f"The predicted resolution time is {predicted_time:.2f} hours. To minimize further impact, "
+            "ensure sufficient resource allocation and monitor for potential cascading failures."
         )
     else:
-        return f"Expected resolution time: {predicted_time:.2f} hours. Ensure proper resource allocation."
+        return (
+            f"The issue is expected to be resolved within {predicted_time:.2f} hours. "
+            f"Considering previous issue frequency, the weighted resolution time is {weighted_time:.2f} hours. "
+            "Allocate resources efficiently and ensure prompt follow-up after resolution."
+        )
 
 if __name__ == "__main__":
     import uvicorn
