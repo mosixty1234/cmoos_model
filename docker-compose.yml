@@ -4,7 +4,22 @@ services:
   api:
     build:
       context: .
+      dockerfile: Dockerfile  # Explicitly state the Dockerfile, if not named "Dockerfile"
     ports:
       - "8000:8000"
     volumes:
       - .:/app  # Mount the current directory to the /app in the container
+    environment:
+      - ENV=development  # Example of setting environment variables
+    networks:
+      - api_network
+    restart: unless-stopped  # Automatically restart the service if it crashes
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  api_network:
+    driver: bridge
