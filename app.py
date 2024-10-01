@@ -76,7 +76,7 @@ class MaintenanceIssue(BaseModel):
     description: str
     severity: float = Field(..., gt=0, lt=11, description="Severity must be between 1 and 10")
     total_downtime: float = Field(..., gt=0, description="Total downtime must be positive")
-    oee: float = Field(..., gt=0, lt=1.1, description="OEE must be between 0 and 1")
+    rpn: float = Field(..., gt=0, lt=101, description="RPN must be between 0 and 100")
     issue_frequency: int = Field(..., ge=0, description="Issue frequency must be non-negative")
 
 # Predict maintenance issue resolution time
@@ -89,7 +89,7 @@ async def predict_issue(issue: MaintenanceIssue):
         description_vec = tfidf.transform([issue.description]).toarray()
 
         # Combine numeric features and scale them
-        numeric_features = np.array([[issue.severity, issue.total_downtime, issue.oee]])
+        numeric_features = np.array([[issue.severity, issue.total_downtime, issue.rpn]])
         numeric_features_scaled = scaler.transform(numeric_features)
 
         # Model prediction
@@ -125,7 +125,7 @@ async def predict_issue(issue: MaintenanceIssue):
         logger.error(f"Prediction error: {e}")
         raise HTTPException(status_code=500, detail="Prediction failed")
 
-# Improved recommendation based on severity, OEE, and downtime
+# Improved recommendation based on severity, RPN, and downtime
 def generate_recommendation(issue: MaintenanceIssue, predicted_time: float, weighted_time: float) -> str:
     if issue.severity >= 8:
         return (
@@ -134,11 +134,11 @@ def generate_recommendation(issue: MaintenanceIssue, predicted_time: float, weig
             f"the weighted resolution time is {weighted_time:.2f} hours. It is recommended to assign experienced personnel to "
             "mitigate the potential downtime."
         )
-    elif issue.oee < 0.7:
+    elif issue.rpn > 70:
         return (
-            f"Low OEE detected ({issue.oee:.2f}), which could indicate inefficiencies in the system. "
-            f"The issue should be resolved within {predicted_time:.2f} hours, but to prevent future downtimes, consider "
-            "implementing preventive maintenance measures alongside the repair."
+            f"High RPN detected ({issue.rpn}/100), which indicates a critical risk. "
+            f"The issue should be resolved within {predicted_time:.2f} hours. Ensure preventive measures are in place "
+            "to avoid recurrence."
         )
     elif issue.total_downtime > 5:
         return (
