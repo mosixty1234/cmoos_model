@@ -92,8 +92,8 @@ app.layout = dbc.Container(
                             html.Label("Total Downtime (hours)", style=label_style),
                             dcc.Input(id='downtime', type='number', value=1, min=0, style=input_style),
 
-                            html.Label("OEE (0 to 1)", style=label_style),
-                            dcc.Input(id='oee', type='number', value=0.75, min=0, max=1, step=0.01, style=input_style),
+                            html.Label("RPN (0 to 100)", style=label_style),
+                            dcc.Input(id='rpn', type='number', value=50, min=0, max=100, step=1, style=input_style),
 
                             html.Button('Submit prediction', id='submit-val', n_clicks=0, style=button_style, className='hover-button'),
                         ], style=container_style)
@@ -134,11 +134,11 @@ app.layout = dbc.Container(
     [State('issue_desc', 'value'),
      State('severity', 'value'),
      State('downtime', 'value'),
-     State('oee', 'value')]
+     State('rpn', 'value')]
 )
-def update_output(n_clicks_submit, issue_desc, severity, downtime, oee):
+def update_output(n_clicks_submit, issue_desc, severity, downtime, rpn):
     if n_clicks_submit > 0:
-        logger.info(f"User submitted issue: {issue_desc}, Severity: {severity}, Downtime: {downtime}, OEE: {oee}")
+        logger.info(f"User submitted issue: {issue_desc}, Severity: {severity}, Downtime: {downtime}, RPN: {rpn}")
 
         # Validate inputs
         if not issue_desc:
@@ -147,9 +147,9 @@ def update_output(n_clicks_submit, issue_desc, severity, downtime, oee):
         if not (1 <= severity <= 10):
             logger.warning("Severity must be between 1 and 10.")
             return ["Error: Severity must be between 1 and 10"], {}, html.I(className="fa fa-exclamation-triangle", style={'color': 'red'}), "Severity must be between 1 and 10."
-        if not (0 <= oee <= 1):
-            logger.warning("OEE must be between 0 and 1.")
-            return ["Error: OEE must be between 0 and 1"], {}, html.I(className="fa fa-exclamation-triangle", style={'color': 'red'}), "OEE must be between 0 and 1."
+        if not (0 <= rpn <= 100):
+            logger.warning("RPN must be between 0 and 100.")
+            return ["Error: RPN must be between 0 and 100"], {}, html.I(className="fa fa-exclamation-triangle", style={'color': 'red'}), "RPN must be between 0 and 100."
 
         severity_icon = html.I(className="fa fa-exclamation-triangle", style=icon_style) if severity else html.I(className="fa fa-question-circle", style={'color': 'gray'})
 
@@ -157,7 +157,7 @@ def update_output(n_clicks_submit, issue_desc, severity, downtime, oee):
             "description": issue_desc,
             "severity": severity,
             "total_downtime": downtime,
-            "oee": oee,
+            "rpn": rpn,
             "issue_frequency": 5  # Example frequency
         }
 
@@ -213,9 +213,10 @@ def update_output(n_clicks_submit, issue_desc, severity, downtime, oee):
             return ["Error: Request timed out. Please try again later."], {}, severity_icon, "Request timed out."
         except requests.exceptions.RequestException as e:
             logger.error(f"API request failed: {e}")
-            return ["Error: Unable to reach the server. Please try again later."], {}, severity_icon, "Server connection error."
+            return [f"Error: {e}"], {}, severity_icon, "An error occurred while connecting to the API."
 
-    return [], {}, "", ""
+    return ["Please enter the issue details to get a prediction."], {}, html.I(className="fa fa-question-circle", style=icon_style), "Awaiting input."
+
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True, port=8050)
