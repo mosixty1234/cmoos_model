@@ -4,30 +4,30 @@ import re
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Dense, concatenate, Dropout, BatchNormalization, GRU, Embedding
 from tensorflow.keras.layers import Input, Embedding, GRU, Bidirectional, Dense, concatenate, Dropout, BatchNormalization
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.regularizers import l2
-from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau, LearningRateScheduler
+from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, LearningRateScheduler
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+from sklearn.metrics import mean_squared_error, mean_absolute_error
 import logging
-import pickle
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
 import matplotlib.pyplot as plt
 import shap
-import contractions
-from textblob import TextBlob
-import nltk
 import random
-from nltk.corpus import wordnet
+from nltk.corpus import stopwords, wordnet
+from nltk.stem import WordNetLemmatizer
+import nltk
+import contractions
+import pickle
+from textblob import TextBlob
 
 # Download necessary NLTK resources
 nltk.download('stopwords')
 nltk.download('wordnet')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('punkt')
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -131,7 +131,7 @@ tfidf = TfidfVectorizer(max_features=20)
 X_text = tfidf.fit_transform(df['description'].values).toarray()
 
 # Combine numeric features for modeling
-numeric_features = df[['severity', 'occurrence', 'detection', 'total_downtime', 'timeframe_to_fix']].values
+numeric_features = df[['severity', 'occurrence', 'detection', 'total_downtime', 'timeframe_to_fix', 'equipment_age', 'environment_temp']].values
 scaler = StandardScaler()
 numeric_features_scaled = scaler.fit_transform(numeric_features)
 
@@ -165,50 +165,25 @@ for word, i in word_index.items():
         embedding_vector = embeddings_index.get(word)
         if embedding_vector is not None:
             embedding_matrix[i] = embedding_vector
-
-# Convert the descriptions to sequences and pad them
-tokenizer = Tokenizer(num_words=MAX_VOCAB_SIZE)
-tokenizer.fit_on_texts(df['description'])
-X_text_seq = tokenizer.texts_to_sequences(df['description'])
-X_text_seq = pad_sequences(X_text_seq, maxlen=MAX_SEQ_LEN)
-
-# Prepare the embedding matrix for the model
-word_index = tokenizer.word_index
-num_words = min(MAX_VOCAB_SIZE, len(word_index) + 1)
-embedding_matrix = np.zeros((num_words, EMBEDDING_DIM))
-for word, i in word_index.items():
-    if i < MAX_VOCAB_SIZE:
-        embedding_vector = embeddings_index.get(word)
-        if embedding_vector is not None:
-            embedding_matrix[i] = embedding_vector
-
-# Combine numeric features for modeling
-numeric_features = df[['severity', 'occurrence', 'detection', 'total_downtime', 'timeframe_to_fix', 'equipment_age', 'environment_temp']].values
-scaler = StandardScaler()
-numeric_features_scaled = scaler.fit_transform(numeric_features)
-
+            
 # Define target (RPN)
 rpn = df['RPN'].values
 
 # Train-Test Split
 X_train_text, X_test_text, X_train_num, X_test_num, y_train, y_test = train_test_split(
-    X_text_seq, numeric_features_scaled, rpn, test_size=0.3, random_state=42
+    X_text_seq, numeric_features_scaled, df['RPN'].values, test_size=0.3, random_state=42
 )
 
-# Model definition with Bidirectional GRU
+# Define Model Architecture
 text_input = Input(shape=(MAX_SEQ_LEN,), name='text_input')
 embedding_layer = Embedding(num_words, EMBEDDING_DIM, weights=[embedding_matrix], input_length=MAX_SEQ_LEN, trainable=False)(text_input)
 
 gru_layer = Bidirectional(GRU(128, return_sequences=False, kernel_regularizer=l2(0.001)))(embedding_layer)
 
-numeric_input = Input(shape=(7,), name='numeric_input')  # Seven numeric features
+numeric_input = Input(shape=(7,), name='numeric_input')
 concat_layer = concatenate([gru_layer, numeric_input])
 
-# Concatenate with numeric input and continue with the rest of the model
-numeric_input = Input(shape=(7,), name='numeric_input')  # Seven numeric features
-concat_layer = concatenate([gru_layer, numeric_input])
-
-# Add several dense layers with batch normalization and dropout
+# Adding Dense Layers with Batch Normalization and Dropout
 dense_1 = Dense(256, activation='relu', kernel_regularizer=l2(0.001))(concat_layer)
 batch_norm_1 = BatchNormalization()(dense_1)
 dropout_1 = Dropout(0.4)(batch_norm_1)
@@ -220,12 +195,11 @@ dropout_2 = Dropout(0.4)(batch_norm_2)
 dense_3 = Dense(64, activation='relu', kernel_regularizer=l2(0.001))(dropout_2)
 output_layer = Dense(1)(dense_3)
 
-# Compile the model
+# Compile the Model
 model = Model(inputs=[text_input, numeric_input], outputs=output_layer)
 model.compile(optimizer=Adam(learning_rate=0.001), loss='mse', metrics=['mae'])
 
-
-# Callbacks
+# Learning Rate Scheduler
 def step_decay(epoch):
     initial_lr = 0.001
     drop = 0.5
@@ -238,24 +212,22 @@ lr_scheduler = LearningRateScheduler(step_decay)
 callbacks = [
     ModelCheckpoint('issue_predictor_model.keras', save_best_only=True, monitor='val_loss'),
     ReduceLROnPlateau(factor=0.2, patience=5, min_lr=1e-6),
-    LearningRateScheduler(step_decay)
+    lr_scheduler
 ]
 
-]
-
-# Model training
+# Train the Model
 history = model.fit(
     [X_train_text, X_train_num],
     y_train,
     validation_data=([X_test_text, X_test_num], y_test),
-    epochs=100,                    # Increased epochs for robust training
+    epochs=100,
     batch_size=16,
     callbacks=callbacks,
     shuffle=True,
     verbose=1
 )
 
-# Plotting training and validation loss
+# Plot Loss
 plt.figure(figsize=(10, 6))
 plt.plot(history.history['loss'], label='Training Loss')
 plt.plot(history.history['val_loss'], label='Validation Loss')
@@ -267,11 +239,11 @@ plt.grid(True)
 plt.savefig('training_validation_loss_advanced.png')
 plt.show()
 
-# Evaluate model
+# Model Evaluation
 train_preds = model.predict([X_train_text, X_train_num])
 test_preds = model.predict([X_test_text, X_test_num])
 
-# Calculate metrics
+# Metrics Calculation
 train_rmse = np.sqrt(mean_squared_error(y_train, train_preds))
 test_rmse = np.sqrt(mean_squared_error(y_test, test_preds))
 train_mae = mean_absolute_error(y_train, train_preds)
@@ -299,7 +271,7 @@ if isinstance(shap_values, list):
 
 # Create a list of feature names for visualization
 text_feature_names = [f'TF-IDF_{i}' for i in range(X_train_text.shape[1])]
-numeric_feature_names = ['severity', 'occurrence', 'detection', 'total_downtime']
+numeric_feature_names = ['severity', 'occurrence', 'detection', 'total_downtime', 'timeframe_to_fix', 'equipment_age', 'environment_temp']
 feature_names = text_feature_names + numeric_feature_names  # Combine feature names
 
 # Sort SHAP values by their absolute mean importance
