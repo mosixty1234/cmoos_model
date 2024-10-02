@@ -16,3 +16,96 @@
 2024-09-30 15:42:05,262 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
 2024-09-30 15:42:05,422 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 307
 2024-09-30 15:42:06,205 - INFO - Prediction successful!
+2024-09-30 18:51:07,844 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-09-30 18:54:43,039 - INFO - User submitted issue: Motor Failure, Severity: 4, Downtime: 1, OEE: 0.75
+2024-09-30 18:54:43,045 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-09-30 18:54:43,052 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 178
+2024-09-30 18:54:43,052 - ERROR - HTTP error occurred: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-09-30 19:02:01,312 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-09-30 19:03:02,577 - INFO - User submitted issue: Motor Failure, Severity: 4, Downtime: 1, OEE: 0.75
+2024-10-01 01:03:48,416 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-01 02:10:18,555 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-01 02:10:30,902 - INFO - User submitted issue: Motor Failure, Severity: 4, Downtime: 1, OEE: 0.75
+2024-10-01 02:10:30,909 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:10:31,102 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 307
+2024-10-01 02:10:32,214 - INFO - Prediction successful!
+2024-10-01 02:15:26,434 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-01 02:15:43,847 - INFO - User submitted issue: Motor Failure, Severity: 4, Downtime: 1, OEE: 0.75
+2024-10-01 02:15:43,852 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:15:43,861 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 178
+2024-10-01 02:15:43,862 - ERROR - HTTP error occurred: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-01 02:16:17,565 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-01 02:16:35,313 - INFO - User submitted issue: Motor Failure, Severity: 4, Downtime: 1, OEE: 0.75
+2024-10-01 02:16:35,319 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:16:35,324 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 178
+2024-10-01 02:16:35,325 - ERROR - HTTP error occurred: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-01 02:19:43,222 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-01 02:20:11,150 - INFO - User submitted issue: Motor Failure, Severity: 4, Downtime: 1, RPN: 50
+2024-10-01 02:20:11,153 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:20:11,309 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 315
+2024-10-01 02:20:11,909 - INFO - Prediction successful!
+2024-10-01 02:20:59,168 - INFO - User submitted issue: Overheating, Severity: 8, Downtime: 1, RPN: 50
+2024-10-01 02:20:59,170 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:20:59,269 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 404
+2024-10-01 02:20:59,316 - INFO - Prediction successful!
+2024-10-01 02:40:21,839 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-01 02:40:57,453 - INFO - User submitted issue: Pump failure, Severity: 4, Downtime: 1, RPN: 2
+2024-10-01 02:40:57,456 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:40:57,641 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 307
+2024-10-01 02:40:58,209 - INFO - Prediction successful!
+2024-10-01 02:41:15,620 - INFO - User submitted issue: Pump failure, Severity: 4, Downtime: 1, RPN: 40
+2024-10-01 02:41:15,621 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:41:15,738 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 313
+2024-10-01 02:41:15,785 - INFO - Prediction successful!
+2024-10-01 02:41:22,286 - INFO - User submitted issue: Pump failure, Severity: 4, Downtime: 1, RPN: 10
+2024-10-01 02:41:22,287 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:41:22,355 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 310
+2024-10-01 02:41:22,387 - INFO - Prediction successful!
+2024-10-01 02:41:31,875 - INFO - User submitted issue: Pump failure, Severity: 4, Downtime: 1, RPN: 88
+2024-10-01 02:41:31,877 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:41:31,970 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 270
+2024-10-01 02:41:32,025 - INFO - Prediction successful!
+2024-10-01 02:41:46,866 - INFO - User submitted issue: Pump failure, Severity: 9, Downtime: 1, RPN: 88
+2024-10-01 02:41:46,868 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:41:46,953 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 404
+2024-10-01 02:41:47,000 - INFO - Prediction successful!
+2024-10-01 02:42:13,651 - INFO - User submitted issue: Pump failure, Severity: 9, Downtime: 17, RPN: 88
+2024-10-01 02:42:13,653 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:42:13,750 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 404
+2024-10-01 02:42:13,803 - INFO - Prediction successful!
+2024-10-01 02:42:22,773 - INFO - User submitted issue: Pump failure, Severity: 9, Downtime: 25, RPN: 88
+2024-10-01 02:42:22,775 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:42:22,851 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 404
+2024-10-01 02:42:22,945 - INFO - Prediction successful!
+2024-10-01 02:42:28,758 - INFO - User submitted issue: Pump failure, Severity: 9, Downtime: 25, RPN: 90
+2024-10-01 02:42:28,759 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:42:28,850 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 404
+2024-10-01 02:42:28,897 - INFO - Prediction successful!
+2024-10-01 02:42:35,542 - INFO - User submitted issue: Pump failure, Severity: 9, Downtime: 25, RPN: 98
+2024-10-01 02:42:35,543 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:42:35,636 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 404
+2024-10-01 02:42:35,702 - INFO - Prediction successful!
+2024-10-01 02:42:45,784 - INFO - User submitted issue: Pump failure, Severity: 9, Downtime: 25, RPN: 100
+2024-10-01 02:42:45,785 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:42:45,868 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 404
+2024-10-01 02:42:45,918 - INFO - Prediction successful!
+2024-10-01 02:42:54,223 - INFO - User submitted issue: Pump failure, Severity: 4, Downtime: 25, RPN: 100
+2024-10-01 02:42:54,224 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:42:54,299 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 271
+2024-10-01 02:42:54,330 - INFO - Prediction successful!
+2024-10-01 02:43:08,074 - INFO - User submitted issue: Pump failure, Severity: 4, Downtime: 25, RPN: 10
+2024-10-01 02:43:08,075 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:43:08,148 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 323
+2024-10-01 02:43:08,195 - INFO - Prediction successful!
+2024-10-01 02:43:16,490 - INFO - User submitted issue: Pump failure, Severity: 4, Downtime: 25, RPN: 15
+2024-10-01 02:43:16,491 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-01 02:43:16,579 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 323
+2024-10-01 02:43:16,633 - INFO - Prediction successful!

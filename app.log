@@ -340,3 +340,65 @@
 2024-09-30 15:42:05,422 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 4.0, 'total_downtime': 1.0, 'oee': 0.75, 'issue_frequency': 5}, Predicted Time: 1.45
 2024-09-30 15:42:05,422 - app - INFO - Prediction successful: 1.4477827548980713 hours
 2024-09-30 15:42:13,175 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 18:50:11,996 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 18:53:54,010 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 18:56:01,614 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-09-30 19:01:54,612 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-01 01:04:32,262 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-01 02:09:55,130 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-01 02:10:30,917 - app - INFO - Processing issue: Motor Failure
+2024-10-01 02:10:31,102 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 4.0, 'total_downtime': 1.0, 'oee': 0.75, 'issue_frequency': 5}, Predicted Time: 1.22
+2024-10-01 02:10:31,102 - app - INFO - Prediction successful: 1.2156672477722168 hours
+2024-10-01 02:15:36,265 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-01 02:19:51,458 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-01 02:20:11,157 - app - INFO - Processing issue: Motor Failure
+2024-10-01 02:20:11,309 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 4.0, 'total_downtime': 1.0, 'rpn': 50.0, 'issue_frequency': 5}, Predicted Time: 138.63
+2024-10-01 02:20:11,309 - app - INFO - Prediction successful: 138.6279754638672 hours
+2024-10-01 02:20:59,172 - app - INFO - Processing issue: Overheating
+2024-10-01 02:20:59,253 - app - INFO - Input: {'description': 'Overheating', 'severity': 8.0, 'total_downtime': 1.0, 'rpn': 50.0, 'issue_frequency': 5}, Predicted Time: 139.14
+2024-10-01 02:20:59,253 - app - INFO - Prediction successful: 139.13882446289062 hours
+2024-10-01 02:29:51,124 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-01 02:32:28,163 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-01 02:35:39,002 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-01 02:38:48,906 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-01 02:39:45,398 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-01 02:40:39,497 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-01 02:40:57,463 - app - INFO - Processing issue: Pump failure
+2024-10-01 02:40:57,641 - app - INFO - Input: {'description': 'Pump failure', 'severity': 4.0, 'total_downtime': 1.0, 'rpn': 2.0, 'issue_frequency': 5}, Predicted Time: 3.69
+2024-10-01 02:40:57,641 - app - INFO - Prediction successful: 3.6911020278930664 hours
+2024-10-01 02:41:15,623 - app - INFO - Processing issue: Pump failure
+2024-10-01 02:41:15,738 - app - INFO - Input: {'description': 'Pump failure', 'severity': 4.0, 'total_downtime': 1.0, 'rpn': 40.0, 'issue_frequency': 5}, Predicted Time: 94.32
+2024-10-01 02:41:15,738 - app - INFO - Prediction successful: 94.32471466064453 hours
+2024-10-01 02:41:22,289 - app - INFO - Processing issue: Pump failure
+2024-10-01 02:41:22,355 - app - INFO - Input: {'description': 'Pump failure', 'severity': 4.0, 'total_downtime': 1.0, 'rpn': 10.0, 'issue_frequency': 5}, Predicted Time: 22.70
+2024-10-01 02:41:22,355 - app - INFO - Prediction successful: 22.696510314941406 hours
+2024-10-01 02:41:31,878 - app - INFO - Processing issue: Pump failure
+2024-10-01 02:41:31,970 - app - INFO - Input: {'description': 'Pump failure', 'severity': 4.0, 'total_downtime': 1.0, 'rpn': 88.0, 'issue_frequency': 5}, Predicted Time: 208.88
+2024-10-01 02:41:31,970 - app - INFO - Prediction successful: 208.88290405273438 hours
+2024-10-01 02:41:46,869 - app - INFO - Processing issue: Pump failure
+2024-10-01 02:41:46,953 - app - INFO - Input: {'description': 'Pump failure', 'severity': 9.0, 'total_downtime': 1.0, 'rpn': 88.0, 'issue_frequency': 5}, Predicted Time: 209.17
+2024-10-01 02:41:46,953 - app - INFO - Prediction successful: 209.17457580566406 hours
+2024-10-01 02:42:13,655 - app - INFO - Processing issue: Pump failure
+2024-10-01 02:42:13,750 - app - INFO - Input: {'description': 'Pump failure', 'severity': 9.0, 'total_downtime': 17.0, 'rpn': 88.0, 'issue_frequency': 5}, Predicted Time: 209.22
+2024-10-01 02:42:13,750 - app - INFO - Prediction successful: 209.22274780273438 hours
+2024-10-01 02:42:22,777 - app - INFO - Processing issue: Pump failure
+2024-10-01 02:42:22,851 - app - INFO - Input: {'description': 'Pump failure', 'severity': 9.0, 'total_downtime': 25.0, 'rpn': 88.0, 'issue_frequency': 5}, Predicted Time: 209.25
+2024-10-01 02:42:22,851 - app - INFO - Prediction successful: 209.246826171875 hours
+2024-10-01 02:42:28,761 - app - INFO - Processing issue: Pump failure
+2024-10-01 02:42:28,850 - app - INFO - Input: {'description': 'Pump failure', 'severity': 9.0, 'total_downtime': 25.0, 'rpn': 90.0, 'issue_frequency': 5}, Predicted Time: 214.02
+2024-10-01 02:42:28,850 - app - INFO - Prediction successful: 214.0200958251953 hours
+2024-10-01 02:42:35,545 - app - INFO - Processing issue: Pump failure
+2024-10-01 02:42:35,636 - app - INFO - Input: {'description': 'Pump failure', 'severity': 9.0, 'total_downtime': 25.0, 'rpn': 98.0, 'issue_frequency': 5}, Predicted Time: 233.11
+2024-10-01 02:42:35,636 - app - INFO - Prediction successful: 233.1130828857422 hours
+2024-10-01 02:42:45,786 - app - INFO - Processing issue: Pump failure
+2024-10-01 02:42:45,868 - app - INFO - Input: {'description': 'Pump failure', 'severity': 9.0, 'total_downtime': 25.0, 'rpn': 100.0, 'issue_frequency': 5}, Predicted Time: 237.89
+2024-10-01 02:42:45,868 - app - INFO - Prediction successful: 237.8863525390625 hours
+2024-10-01 02:42:54,225 - app - INFO - Processing issue: Pump failure
+2024-10-01 02:42:54,299 - app - INFO - Input: {'description': 'Pump failure', 'severity': 4.0, 'total_downtime': 25.0, 'rpn': 100.0, 'issue_frequency': 5}, Predicted Time: 237.59
+2024-10-01 02:42:54,299 - app - INFO - Prediction successful: 237.5946807861328 hours
+2024-10-01 02:43:08,077 - app - INFO - Processing issue: Pump failure
+2024-10-01 02:43:08,148 - app - INFO - Input: {'description': 'Pump failure', 'severity': 4.0, 'total_downtime': 25.0, 'rpn': 10.0, 'issue_frequency': 5}, Predicted Time: 22.78
+2024-10-01 02:43:08,148 - app - INFO - Prediction successful: 22.778329849243164 hours
+2024-10-01 02:43:16,517 - app - INFO - Processing issue: Pump failure
+2024-10-01 02:43:16,579 - app - INFO - Input: {'description': 'Pump failure', 'severity': 4.0, 'total_downtime': 25.0, 'rpn': 15.0, 'issue_frequency': 5}, Predicted Time: 34.72
+2024-10-01 02:43:16,579 - app - INFO - Prediction successful: 34.717613220214844 hours
