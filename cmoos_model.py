@@ -134,7 +134,7 @@ tfidf = TfidfVectorizer(max_features=20)
 X_text = tfidf.fit_transform(df['description'].values).toarray()
 
 # Combine numeric features with text data for comprehensive input to the mode
-numeric_features = df[['severity', 'occurrence', 'detection', 'total_downtime', 'timeframe_to_fix', 'equipment_age', 'environment_temp']].values
+numeric_features = df[['severity', 'occurrence', 'detection']].values
 scaler = StandardScaler()
 numeric_features_scaled = scaler.fit_transform(numeric_features)
 
@@ -279,7 +279,7 @@ embedding_layer = Embedding(num_words, EMBEDDING_DIM, weights=[embedding_matrix]
 
 gru_layer = Bidirectional(GRU(128, return_sequences=False, kernel_regularizer=l2(0.001)))(embedding_layer)
 
-numeric_input = Input(shape=(7,), name='numeric_input')
+numeric_input = Input(shape=(3,), name='numeric_input')
 concat_layer = concatenate([gru_layer, numeric_input])
 
 # Implement dropout and batch normalization to improve model generalization and prevent overfitting

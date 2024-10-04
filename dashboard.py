@@ -10,62 +10,6 @@ import logging
 # API URL configuration
 API_URL = "http://127.0.0.1:8000/predict/"
 
-# Define enhanced styles
-input_style = {
-    'margin-bottom': '10px',
-    'width': '100%',
-    'padding': '10px',
-    'font-size': '16px',
-    'border-radius': '8px'
-}
-label_style = {
-    'font-weight': 'bold',
-    'margin-top': '10px',
-    'display': 'block',
-    'color': 'black'
-}
-button_style = {
-    'background-color': '#007BFF',
-    'color': 'white',
-    'padding': '12px 28px',
-    'font-size': '16px',
-    'border': 'none',
-    'border-radius': '12px',
-    'cursor': 'pointer',
-    'width': '100%',
-    'box-shadow': '0 4px 8px rgba(0, 0, 0, 0.1)',
-    'transition': 'background-color 0.3s ease, transform 0.2s ease',
-    'text-transform': 'uppercase'
-}
-icon_style = {
-    'margin-left': '10px',
-    'color': '#ffdd57',
-    'text-shadow': '0 0 8px #ffdd57'
-}
-header_style = {
-    'text-align': 'center',
-    'color': 'black',
-    'font-family': 'Verdana, sans-serif',
-    'margin-top': '20px'
-}
-error_message_style = {
-    'margin-top': '20px',
-    'text-align': 'center',
-    'font-size': '18px',
-    'color': 'red'
-}
-success_message_style = {
-    'margin-top': '20px',
-    'text-align': 'center',
-    'font-size': '18px',
-    'color': 'green'
-}
-container_style = {
-    'background': 'linear-gradient(145deg, #292e49, #536976)',
-    'border-radius': '15px',
-    'padding': '20px'
-}
-
 # Initialize logging
 logging.basicConfig(filename='dash_app.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -73,92 +17,90 @@ logger = logging.getLogger(__name__)
 # Initialize Dash app with Bootstrap theme
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
+# Define styles
+input_style = {'margin-bottom': '10px', 'width': '100%', 'padding': '10px', 'font-size': '16px', 'border-radius': '8px'}
+label_style = {'font-weight': 'bold', 'margin-top': '10px', 'display': 'block', 'color': 'black'}
+button_style = {
+    'background-color': '#007BFF', 'color': 'white', 'padding': '12px 28px', 'font-size': '16px', 'border': 'none',
+    'border-radius': '12px', 'cursor': 'pointer', 'width': '100%', 'box-shadow': '0 4px 8px rgba(0, 0, 0, 0.1)',
+    'transition': 'background-color 0.3s ease, transform 0.2s ease', 'text-transform': 'uppercase'
+}
+header_style = {'text-align': 'center', 'color': 'black', 'font-family': 'Verdana, sans-serif', 'margin-top': '20px'}
+container_style = {'background': 'linear-gradient(145deg, #292e49, #536976)', 'border-radius': '15px', 'padding': '20px'}
+
+# App layout
 app.layout = dbc.Container(
     [
         html.H1("✨ CMOOS Maintenance Issue Prediction Dashboard ✨", style=header_style),
 
         dbc.Row(
-            [
-                dbc.Col(
-                    [
-                        html.Div([
-                            html.Label("Issue Description", style=label_style),
-                            dcc.Input(id='issue_desc', type='text', value='', placeholder='Enter issue description', style=input_style),
-
-                            html.Label("Severity (1-10)", style=label_style),
-                            dcc.Input(id='severity', type='number', value=4, min=1, max=10, style=input_style),
-                            html.Div(id='severity-icon', style={'display': 'inline-block'}),
-
-                            html.Label("Total Downtime (hours)", style=label_style),
-                            dcc.Input(id='downtime', type='number', value=1, min=0, style=input_style),
-
-                            html.Label("RPN (0 to 100)", style=label_style),
-                            dcc.Input(id='rpn', type='number', value=50, min=0, max=100, step=1, style=input_style),
-
-                            html.Button('Submit prediction', id='submit-val', n_clicks=0, style=button_style, className='hover-button'),
-                        ], style=container_style)
-                    ],
-                    width=6,
-                )
-            ],
+            dbc.Col(
+                html.Div([
+                    html.Label("Issue Description", style=label_style),
+                    dcc.Input(id='issue_desc', type='text', placeholder='Enter issue description', style=input_style),
+                    html.Label("Severity (1-10)", style=label_style),
+                    dcc.Input(id='severity', type='number', min=1, max=10, value=4, style=input_style),
+                    html.Label("Occurrence (1-10)", style=label_style),
+                    dcc.Input(id='occurrence', type='number', min=1, max=10, value=4, style=input_style),
+                    html.Label("Detection (1-10)", style=label_style),
+                    dcc.Input(id='detection', type='number', min=1, max=10, value=4, style=input_style),
+                    html.Label("Total Downtime (hours)", style=label_style),
+                    dcc.Input(id='downtime', type='number', min=0, value=1, style=input_style),
+                    html.Label("Calculated RPN (0 to 100)", style=label_style),
+                    html.Div(id='calculated_rpn', style={'font-weight': 'bold', 'margin-top': '10px'}),
+                    html.Button('Submit prediction', id='submit-val', n_clicks=0, style=button_style),
+                ], style=container_style),
+                width=6
+            ),
             justify='center',
             className='mt-5'
         ),
 
         html.Div(id='status-message', style={'margin-top': '20px', 'text-align': 'center', 'font-size': '18px'}),
-
-        dcc.Loading(
-            id="loading",
-            type="circle",
-            children=html.Div(id='prediction-output', style={'margin-top': '30px', 'text-align': 'center', 'font-size': '18px'})
-        ),
+        dcc.Loading(id="loading", type="circle", children=html.Div(id='prediction-output', style={'margin-top': '30px', 'text-align': 'center', 'font-size': '18px'})),
 
         dbc.Row(
-            dbc.Col(
-                dcc.Graph(id='issue-frequency-chart'),
-                width=8
-            ),
+            dbc.Col(dcc.Graph(id='issue-frequency-chart'), width=8),
             justify='center',
             className='mt-5'
         )
     ],
-    fluid=True,
+    fluid=True
 )
 
 @app.callback(
-    [Output('prediction-output', 'children'),
+    [Output('calculated_rpn', 'children'),
+     Output('prediction-output', 'children'),
      Output('issue-frequency-chart', 'figure'),
-     Output('severity-icon', 'children'),
      Output('status-message', 'children')],
     [Input('submit-val', 'n_clicks')],
-    [State('issue_desc', 'value'),
-     State('severity', 'value'),
-     State('downtime', 'value'),
-     State('rpn', 'value')]
+    [State('severity', 'value'), State('occurrence', 'value'), State('detection', 'value'),
+     State('issue_desc', 'value'), State('downtime', 'value')]
 )
-def update_output(n_clicks_submit, issue_desc, severity, downtime, rpn):
+def update_output(n_clicks_submit, severity, occurrence, detection, issue_desc, downtime):
+    # Calculate RPN
+    rpn = severity * occurrence * detection
+    rpn = max(0, min(rpn, 100))  # Cap RPN between 0 and 100
+
+    rpn_display = f"{rpn} (RPN = Severity x Occurrence x Detection)"
+
     if n_clicks_submit > 0:
-        logger.info(f"User submitted issue: {issue_desc}, Severity: {severity}, Downtime: {downtime}, RPN: {rpn}")
+        logger.info(f"User submitted issue: {issue_desc}, Severity: {severity}, Occurrence: {occurrence}, Detection: {detection}, Downtime: {downtime}, RPN: {rpn}")
 
         # Validate inputs
         if not issue_desc:
             logger.warning("Issue description is required.")
-            return ["Error: Issue description is required"], {}, html.I(className="fa fa-question-circle", style=icon_style), "Please enter an issue description."
-        if not (1 <= severity <= 10):
-            logger.warning("Severity must be between 1 and 10.")
-            return ["Error: Severity must be between 1 and 10"], {}, html.I(className="fa fa-exclamation-triangle", style={'color': 'red'}), "Severity must be between 1 and 10."
-        if not (0 <= rpn <= 100):
-            logger.warning("RPN must be between 0 and 100.")
-            return ["Error: RPN must be between 0 and 100"], {}, html.I(className="fa fa-exclamation-triangle", style={'color': 'red'}), "RPN must be between 0 and 100."
-
-        severity_icon = html.I(className="fa fa-exclamation-triangle", style=icon_style) if severity else html.I(className="fa fa-question-circle", style={'color': 'gray'})
+            return rpn_display, ["Error: Issue description is required"], {}, "Please enter an issue description."
+        if not (1 <= severity <= 10 and 1 <= occurrence <= 10 and 1 <= detection <= 10):
+            logger.warning("Severity, Occurrence, and Detection must be between 1 and 10.")
+            return rpn_display, ["Error: Severity, Occurrence, and Detection must be between 1 and 10"], {}, "Values must be between 1 and 10."
 
         input_data = {
             "description": issue_desc,
             "severity": severity,
-            "total_downtime": downtime,
-            "rpn": rpn,
-            "issue_frequency": 5  # Example frequency
+            "occurrence": occurrence,
+            "detection": detection,
+            "total_downtime": downtime
         }
 
         try:
@@ -184,39 +126,24 @@ def update_output(n_clicks_submit, issue_desc, severity, downtime, rpn):
                              text='Frequency', labels={'Issue': 'Type of Issue', 'Frequency': 'Occurrences'},
                              color='Frequency', color_continuous_scale=px.colors.sequential.Turbo)
 
-                # Update layout for better visibility of x and y axes with grey background
                 fig.update_layout(
                     title_font_size=24,
                     xaxis_title="Issue Type",
                     yaxis_title="Number of Occurrences",
-                    plot_bgcolor="rgba(240, 240, 240, 0.8)",  # Grey background
-                    paper_bgcolor="rgba(240, 240, 240, 0.8)"   # Grey background for plot area
+                    plot_bgcolor="rgba(240, 240, 240, 0.8)",
+                    paper_bgcolor="rgba(240, 240, 240, 0.8)"
                 )
 
                 fig.update_traces(marker_line_color='black', marker_line_width=1.5, textfont_color='black')
                 fig.update_xaxes(showgrid=True, gridcolor='lightgrey')
                 fig.update_yaxes(showgrid=True, gridcolor='lightgrey')
 
-                logger.info("Prediction successful!")
-                return prediction_output, fig, severity_icon, "Prediction successful!"
-
-            else:
-                error_message = result.get('detail', 'Unexpected response structure from API.')
-                logger.error(f"Unexpected response structure: {error_message}")
-                return [f"Error: {error_message}"], {}, severity_icon, error_message
-
-        except requests.exceptions.HTTPError as http_err:
-            logger.error(f"HTTP error occurred: {http_err}")
-            return ["Error: Unable to process your request. Please try again later."], {}, severity_icon, "HTTP error occurred."
-        except requests.exceptions.Timeout:
-            logger.error("The request timed out")
-            return ["Error: Request timed out. Please try again later."], {}, severity_icon, "Request timed out."
+                return rpn_display, prediction_output, fig, "Prediction successful!"
         except requests.exceptions.RequestException as e:
-            logger.error(f"API request failed: {e}")
-            return [f"Error: {e}"], {}, severity_icon, "An error occurred while connecting to the API."
+            logger.error(f"Error during prediction request: {str(e)}")
+            return rpn_display, ["Error: Failed to get prediction"], {}, "Error: Unable to reach prediction API."
 
-    return ["Please enter the issue details to get a prediction."], {}, html.I(className="fa fa-question-circle", style=icon_style), "Awaiting input."
-
+    return rpn_display, "", {}, ""
 
 if __name__ == '__main__':
     app.run_server(debug=True, port=8050)

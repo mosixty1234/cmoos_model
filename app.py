@@ -1,51 +1,18 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel, Field
+from fastapi import FastAPI, HTTPException, status
+from pydantic import BaseModel
 import numpy as np
 import pickle
 import logging
 from tensorflow.keras.models import load_model
 from fastapi.middleware.cors import CORSMiddleware
 from functools import lru_cache
-from prometheus_fastapi_instrumentator import Instrumentator
-
-
+import os
 
 # Initialize FastAPI app
 app = FastAPI(
     title="Maintenance Issue Prediction API",
     description="Predicts time to resolve maintenance issues based on description, severity, and other features.",
     version="2.1.0"
-)
-
-# Prometheus Instrumentation (setup before the app starts)
-Instrumentator().instrument(app).expose(app)
-
-# Startup event to load model and scaler
-@app.on_event("startup")
-async def startup_event():
-    global model, scaler, tfidf
-    try:
-        model, scaler, tfidf = load_assets()
-        logger.info("Model, scaler, and TFIDF loaded successfully.")
-    except Exception as e:
-        logger.error(f"Error during startup: {e}")
-        raise HTTPException(status_code=500, detail="Failed to load assets.")
-
-# Load environment variables (paths)
-MODEL_PATH = 'issue_predictor_model.keras'
-SCALER_PATH = 'scaler.pkl'
-TFIDF_PATH = 'tfidf.pkl'
-
-
-
-# Setup CORS middleware for development
-origins = ["http://127.0.0.1:8080"]
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["POST", "GET"],
-    allow_headers=["Authorization", "Content-Type"],
 )
 
 # Setup logging
@@ -56,6 +23,20 @@ logging.basicConfig(
     level=logging.INFO
 )
 logger = logging.getLogger(__name__)
+
+# Load environment variables (paths)
+MODEL_PATH = os.getenv('MODEL_PATH', 'issue_predictor_model.keras')
+SCALER_PATH = os.getenv('SCALER_PATH', 'scaler.pkl')
+TFIDF_PATH = os.getenv('TFIDF_PATH', 'tfidf.pkl')
+
+# Setup CORS middleware for development
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins (for dev)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Load model and preprocessing assets on startup (cached to avoid reloading)
 @lru_cache()
@@ -71,43 +52,40 @@ def load_assets():
     except Exception as e:
         logger.error(f"Error loading assets: {e}")
         raise HTTPException(status_code=500, detail="Failed to load assets.")
-        
-# Root endpoint to check API status
-@app.get("/")
-async def read_root():
-    return {"message": "API is up and running!"}
-
-@app.get("/favicon.ico", include_in_schema=False)
-async def favicon():
-    return Response(status_code=204)
-
-# Health check endpoint
-@app.get("/health/")
-async def health_check():
-    try:
-        # Check if the model, scaler, and TFIDF are loaded
-        load_assets()
-        return {"status": "healthy"}
-    except Exception as e:
-        logger.error(f"Health check failed: {e}")
-        raise HTTPException(status_code=500, detail="API health check failed")
-
 
 # Request validation using Pydantic
 class MaintenanceIssue(BaseModel):
     description: str
-    severity: float = Field(..., gt=0, lt=11, description="Severity must be between 1 and 10")
-    occurrence: float = Field(..., gt=0, lt=11, description="Occurrence must be between 1 and 10")
-    detection: float = Field(..., gt=0, lt=11, description="Detection must be between 1 and 10")
-    total_downtime: float = Field(..., gt=0, description="Total downtime must be positive")
-    issue_frequency: int = Field(..., ge=0, description="Issue frequency must be non-negative")
+    severity: int
+    occurrence: int
+    detection: int
 
 # Calculate RPN dynamically
-def calculate_rpn(severity, occurrence, detection):
+def calculate_rpn(severity: int, occurrence: int, detection: int) -> int:
     return severity * occurrence * detection
 
+# Generate recommendation based on severity, RPN, and downtime
+def generate_recommendation(issue: MaintenanceIssue, predicted_time: float, weighted_time: float, rpn: int) -> str:
+    if issue.severity >= 8:
+        return (
+            f"The issue has a high severity level ({issue.severity}/10), demanding immediate attention. "
+            f"Predicted resolution time is {predicted_time:.2f} hours, and weighted resolution time is {weighted_time:.2f} hours. "
+            "Consider assigning experienced personnel to mitigate downtime."
+        )
+    elif rpn > 200:
+        return (
+            f"High RPN detected ({rpn}/1000), indicating a critical risk. "
+            f"The issue should be resolved in {predicted_time:.2f} hours. Ensure preventive measures are in place "
+            "to avoid recurrence."
+        )
+    else:
+        return (
+            f"Expected resolution time: {predicted_time:.2f} hours. "
+            f"Weighted resolution time: {weighted_time:.2f} hours. Ensure efficient resource allocation."
+        )
+
 # Predict maintenance issue resolution time
-@app.post("/predict/")
+@app.post("/predict/", response_model=dict, status_code=status.HTTP_200_OK)  # Set explicit status code
 async def predict_issue(issue: MaintenanceIssue):
     try:
         logger.info(f"Processing issue: {issue.description}")
@@ -117,15 +95,22 @@ async def predict_issue(issue: MaintenanceIssue):
 
         # Calculate RPN
         rpn = calculate_rpn(issue.severity, issue.occurrence, issue.detection)
-
-        # Log the RPN value
         logger.info(f"Calculated RPN: {rpn}")
 
         # Transform input description using the TFIDF vectorizer
         description_vec = tfidf.transform([issue.description]).toarray()
 
+        # Ensure the TF-IDF vector has the correct shape (None, 50)
+        expected_tfidf_shape = 50
+        if description_vec.shape[1] < expected_tfidf_shape:
+            # Pad the vector with zeros if it has fewer features than expected
+            description_vec = np.pad(description_vec, ((0, 0), (0, expected_tfidf_shape - description_vec.shape[1])), 'constant')
+        elif description_vec.shape[1] > expected_tfidf_shape:
+            # Truncate the vector if it has more features than expected
+            description_vec = description_vec[:, :expected_tfidf_shape]
+
         # Combine numeric features and scale them
-        numeric_features = np.array([[issue.severity, issue.total_downtime, rpn]])
+        numeric_features = np.array([[issue.severity, issue.occurrence, issue.detection]])
         numeric_features_scaled = scaler.transform(numeric_features)
 
         # Model prediction
@@ -139,16 +124,18 @@ async def predict_issue(issue: MaintenanceIssue):
         # Log the input and output of the prediction
         logger.info(f"Input: {issue.dict()}, Predicted Time: {predicted_time:.2f}")
 
-        # Apply weighting based on issue frequency
-        frequency_weight = 1 + (issue.issue_frequency / 10)
+        # Apply a default frequency weight since issue_frequency is removed
+        frequency_weight = 1  # Default weight since issue_frequency is not included
         weighted_time = predicted_time * frequency_weight
 
-        # Generate enhanced recommendation
+        # Generate recommendation
         recommendation = generate_recommendation(issue, predicted_time, weighted_time, rpn)
 
         logger.info(f"Prediction successful: {predicted_time} hours")
 
+        # Explicitly return HTTP 200 OK with a message
         return {
+            "message": "Prediction successful",  # Adding a success message
             "predicted_time": round(predicted_time, 2),
             "weighted_time": round(weighted_time, 2),
             "frequency_weight": frequency_weight,
@@ -162,34 +149,22 @@ async def predict_issue(issue: MaintenanceIssue):
         logger.error(f"Prediction error: {e}")
         raise HTTPException(status_code=500, detail="Prediction failed")
 
-# Improved recommendation based on severity, RPN, and downtime
-def generate_recommendation(issue: MaintenanceIssue, predicted_time: float, weighted_time: float, rpn: float) -> str:
-    if issue.severity >= 8:
-        return (
-            f"The issue has a high severity level ({issue.severity}/10), which demands immediate attention. "
-            f"The predicted resolution time is approximately {predicted_time:.2f} hours, and considering past occurrences, "
-            f"the weighted resolution time is {weighted_time:.2f} hours. It is recommended to assign experienced personnel to "
-            "mitigate the potential downtime."
-        )
-    elif rpn > 200:
-        return (
-            f"High RPN detected ({rpn}/1000), which indicates a critical risk. "
-            f"The issue should be resolved within {predicted_time:.2f} hours. Ensure preventive measures are in place "
-            "to avoid recurrence."
-        )
-    elif issue.total_downtime > 5:
-        return (
-            f"The system has already experienced significant downtime ({issue.total_downtime:.2f} hours). "
-            f"The predicted resolution time is {predicted_time:.2f} hours. To minimize further impact, "
-            "ensure sufficient resource allocation and monitor for potential cascading failures."
-        )
-    else:
-        return (
-            f"The issue is expected to be resolved within {predicted_time:.2f} hours. "
-            f"Considering previous issue frequency, the weighted resolution time is {weighted_time:.2f} hours. "
-            "Allocate resources efficiently and ensure prompt follow-up after resolution."
-        )
+# Startup event to load model and scaler
+@app.on_event("startup")
+async def startup_event():
+    try:
+        load_assets()
+        logger.info("Model, scaler, and TFIDF loaded successfully.")
+    except Exception as e:
+        logger.error(f"Error during startup: {e}")
+        raise HTTPException(status_code=500, detail="Failed to load assets.")
 
+# FastAPI root endpoint
+@app.get("/")
+async def main():
+    return {"message": "Welcome to the Maintenance Issue Prediction API!"}
+
+# Run the application
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

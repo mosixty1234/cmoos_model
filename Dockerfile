@@ -11,6 +11,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the entire project to the container
 COPY . .
 
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9
+
 # Expose the ports for FastAPI (8000) and Dash (8050)
 EXPOSE 8000
 EXPOSE 8050

@@ -223,3 +223,132 @@
 2024-10-01 02:43:16,579 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 323
 2024-10-01 02:43:16,633 - INFO - Prediction successful!
 >>>>>>> 1bfc92f50298a38ed8913efdfc7b69334b857c53
+2024-10-04 15:33:54,767 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-04 15:50:27,627 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-04 15:50:53,899 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 15:50:53,902 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 15:50:53,914 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 15:50:53,914 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 15:51:42,040 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 15:51:42,041 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 15:51:42,044 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 15:51:42,045 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 15:57:20,651 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-04 15:57:32,919 - INFO - User submitted issue: Pump failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 15:57:32,922 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 15:57:32,925 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 351
+2024-10-04 15:57:32,925 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:17,722 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-04 16:35:43,256 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:43,261 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:43,264 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:43,264 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:45,910 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:45,911 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:45,913 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:45,913 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:46,361 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:46,362 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:46,364 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:46,365 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:46,576 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:46,577 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:46,580 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:46,581 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:46,746 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:46,747 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:46,750 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:46,750 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:47,105 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:47,106 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:47,133 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:47,133 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:47,369 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:47,370 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:47,373 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:47,373 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:47,614 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:47,614 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:47,614 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:47,614 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:47,785 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:47,786 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:47,788 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:47,789 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:48,202 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:48,203 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:48,206 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:48,207 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:48,440 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:48,441 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:48,444 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:48,444 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:48,841 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:48,842 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:48,845 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:48,845 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:49,081 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:49,083 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:49,086 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:49,086 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:49,392 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:49,394 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:49,398 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:49,398 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:49,814 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:49,815 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:49,817 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:49,817 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:50,046 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:50,047 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:50,050 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:50,050 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:50,238 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:50,239 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:50,242 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:50,242 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:50,452 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:50,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:50,456 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:50,456 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:50,678 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:50,679 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:50,682 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:50,683 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:51,160 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:51,161 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:51,164 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:51,165 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:35:51,442 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:35:51,443 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:35:51,446 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-04 16:35:51,446 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:38:13,960 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-04 16:38:45,153 - INFO - User submitted issue: Pump failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:38:45,155 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:38:45,160 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 351
+2024-10-04 16:38:45,160 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:38:46,240 - INFO - User submitted issue: Pump failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:38:46,241 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:38:46,244 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 351
+2024-10-04 16:38:46,244 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-04 16:38:46,715 - INFO - User submitted issue: Pump failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-04 16:38:46,716 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-04 16:38:46,719 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 351
+2024-10-04 16:38:46,719 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-05 00:53:52,504 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-05 00:54:14,834 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-05 00:54:14,837 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 00:54:14,846 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 353
+2024-10-05 00:54:14,846 - ERROR - Error during prediction request: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-05 00:58:30,775 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-05 00:58:44,603 - INFO - User submitted issue: Pump failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-05 00:58:44,605 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 00:58:45,247 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 247

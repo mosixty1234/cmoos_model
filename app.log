@@ -402,3 +402,145 @@
 2024-10-01 02:43:16,517 - app - INFO - Processing issue: Pump failure
 2024-10-01 02:43:16,579 - app - INFO - Input: {'description': 'Pump failure', 'severity': 4.0, 'total_downtime': 25.0, 'rpn': 15.0, 'issue_frequency': 5}, Predicted Time: 34.72
 2024-10-01 02:43:16,579 - app - INFO - Prediction successful: 34.717613220214844 hours
+2024-10-04 14:48:47,367 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 14:50:07,740 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:05:19,738 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:05:19,738 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:05:19,738 - app - ERROR - Error during startup: Cannot add middleware after an application has started
+2024-10-04 15:07:06,057 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:07:06,057 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:08:35,885 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:08:35,885 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:20:21,679 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:20:21,679 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:21:21,021 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:21:21,021 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:33:11,114 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:33:11,114 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:50:42,103 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:50:42,103 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:55:09,097 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:55:09,097 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:56:52,842 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 15:56:52,842 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 16:35:32,666 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 16:35:32,666 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 16:38:27,383 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 16:38:27,383 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 16:39:49,407 - app - INFO - Processing issue: Issue description here
+2024-10-04 16:39:49,407 - app - INFO - Calculated RPN: 30.0
+2024-10-04 16:39:49,438 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 16:41:35,592 - app - INFO - Processing issue: Issue description here
+2024-10-04 16:41:35,592 - app - INFO - Calculated RPN: 60.0
+2024-10-04 16:41:35,592 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 16:55:12,903 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 16:55:12,903 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 16:57:37,897 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 16:57:37,897 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 16:59:35,448 - app - INFO - Processing issue: Hydraulic system failure due to oil leak.
+2024-10-04 16:59:35,448 - app - INFO - Calculated RPN: 210.0
+2024-10-04 16:59:35,448 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 17:00:49,283 - app - INFO - Processing issue: Hydraulic system failure due to oil leak.
+2024-10-04 17:00:49,283 - app - INFO - Calculated RPN: 210.0
+2024-10-04 17:00:49,283 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 17:03:16,795 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:03:16,795 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:03:33,579 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:03:33,579 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:03:41,191 - app - INFO - Processing issue: Hydraulic system failure due to oil leak.
+2024-10-04 17:03:41,191 - app - INFO - Calculated RPN: 210.0
+2024-10-04 17:03:41,191 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 17:04:14,973 - app - INFO - Processing issue: Hydraulic system failure due to oil leak.
+2024-10-04 17:04:14,973 - app - INFO - Calculated RPN: 210.0
+2024-10-04 17:04:14,973 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 17:07:09,072 - app - INFO - Processing issue: Hydraulic system failure due to oil leak.
+2024-10-04 17:07:09,072 - app - INFO - Calculated RPN: 210.0
+2024-10-04 17:07:09,072 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 17:09:56,103 - app - INFO - Processing issue: Hydraulic system failure due to oil leak.
+2024-10-04 17:09:56,103 - app - INFO - Calculated RPN: 210.0
+2024-10-04 17:09:56,103 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 17:24:43,944 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:24:43,944 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:24:43,975 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:24:43,975 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:24:44,022 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:24:44,022 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:25:35,723 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:25:35,723 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:26:33,866 - app - INFO - Processing issue: Sample maintenance issue
+2024-10-04 17:26:33,866 - app - INFO - Calculated RPN: 105.0
+2024-10-04 17:26:33,866 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 17:32:29,010 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:32:29,010 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:33:47,412 - app - INFO - Processing issue: Sample maintenance issue
+2024-10-04 17:33:47,412 - app - INFO - Calculated RPN: 105.0
+2024-10-04 17:33:47,412 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 17:35:26,968 - app - INFO - Processing issue: Motor failure
+2024-10-04 17:35:26,968 - app - INFO - Calculated RPN: 105.0
+2024-10-04 17:35:26,984 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 17:36:11,844 - app - INFO - Processing issue: The machine is overheating.
+2024-10-04 17:36:11,844 - app - INFO - Calculated RPN: 135.0
+2024-10-04 17:36:11,844 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 17:42:29,613 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:42:29,613 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:53:37,546 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:53:37,546 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:55:57,640 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:55:57,640 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 17:59:07,257 - app - INFO - Processing issue: Pump failure in the cooling system.
+2024-10-04 17:59:07,257 - app - INFO - Calculated RPN: 135.0
+2024-10-04 17:59:07,257 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 18:00:58,173 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 18:00:58,173 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 18:01:54,435 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 18:01:54,435 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 18:02:38,176 - app - INFO - Processing issue: Pump failure in the cooling system.
+2024-10-04 18:02:38,176 - app - INFO - Calculated RPN: 135.0
+2024-10-04 18:02:38,176 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 18:02:59,824 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 18:02:59,824 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 18:08:01,945 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 18:08:01,945 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 18:08:40,416 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 18:08:40,416 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 18:08:44,964 - app - INFO - Processing issue: Pump failure in the cooling system.
+2024-10-04 18:08:44,964 - app - INFO - Calculated RPN: 135.0
+2024-10-04 18:08:44,964 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 18:14:21,480 - app - INFO - Processing issue: Pump failure in the cooling system.
+2024-10-04 18:14:21,480 - app - INFO - Calculated RPN: 135.0
+2024-10-04 18:14:21,480 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 18:16:00,381 - app - INFO - Processing issue: Pump failure in the cooling system.
+2024-10-04 18:16:00,381 - app - INFO - Calculated RPN: 135.0
+2024-10-04 18:16:00,381 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 18:17:08,216 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 18:17:08,216 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 18:17:19,905 - app - INFO - Processing issue: Pump failure in the cooling system.
+2024-10-04 18:17:19,905 - app - INFO - Calculated RPN: 135.0
+2024-10-04 18:17:19,905 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-04 18:18:16,798 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 18:18:16,798 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 18:18:31,832 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 18:18:31,832 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-04 18:19:12,646 - app - INFO - Processing issue: Pump failure in the cooling system.
+2024-10-04 18:19:12,646 - app - INFO - Calculated RPN: 135.0
+2024-10-04 18:19:12,646 - app - ERROR - Validation error: X has 3 features, but StandardScaler is expecting 7 features as input.
+2024-10-05 00:26:26,887 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 00:26:26,918 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 00:26:35,827 - app - INFO - Processing issue: Pump failure due to overheating
+2024-10-05 00:26:35,827 - app - INFO - Calculated RPN: 84
+2024-10-05 00:26:35,983 - app - ERROR - Validation error: Input 0 of layer "functional" is incompatible with the layer: expected shape=(None, 50), found shape=(1, 20)
+2024-10-05 00:32:27,710 - app - INFO - Processing issue: Pump failure due to overheating
+2024-10-05 00:32:27,710 - app - INFO - Calculated RPN: 84
+2024-10-05 00:32:27,835 - app - ERROR - Validation error: Input 0 of layer "functional" is incompatible with the layer: expected shape=(None, 50), found shape=(1, 20)
+2024-10-05 00:49:34,836 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 00:49:34,836 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 00:50:39,964 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 00:50:39,964 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 00:50:44,028 - app - INFO - Processing issue: Pump failure due to overheating
+2024-10-05 00:50:44,028 - app - INFO - Calculated RPN: 84
+2024-10-05 00:50:44,575 - app - INFO - Input: {'description': 'Pump failure due to overheating', 'severity': 7, 'occurrence': 4, 'detection': 3}, Predicted Time: 0.18
+2024-10-05 00:50:44,575 - app - INFO - Prediction successful: 0.17702962458133698 hours
+2024-10-05 00:53:17,483 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 00:53:17,483 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 00:58:01,617 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 00:58:01,617 - app - INFO - Model, scaler, and TFIDF loaded successfully.
