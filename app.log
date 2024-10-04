@@ -544,3 +544,37 @@
 2024-10-05 00:53:17,483 - app - INFO - Model, scaler, and TFIDF loaded successfully.
 2024-10-05 00:58:01,617 - app - INFO - Model, scaler, and TFIDF loaded successfully.
 2024-10-05 00:58:01,617 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 00:58:24,555 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 00:58:24,555 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 00:58:44,610 - app - INFO - Processing issue: Pump failure
+2024-10-05 00:58:44,610 - app - INFO - Calculated RPN: 64
+2024-10-05 00:58:45,246 - app - INFO - Input: {'description': 'Pump failure', 'severity': 4, 'occurrence': 4, 'detection': 4}, Predicted Time: 0.26
+2024-10-05 00:58:45,247 - app - INFO - Prediction successful: 0.2581886947154999 hours
+2024-10-05 01:02:27,870 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 01:02:27,886 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 01:02:48,334 - app - INFO - Processing issue: Motor Failure
+2024-10-05 01:02:48,335 - app - INFO - Calculated RPN: 64
+2024-10-05 01:02:49,028 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 4, 'occurrence': 4, 'detection': 4}, Predicted Time: 0.26
+2024-10-05 01:02:49,028 - app - INFO - Prediction successful: 0.2581886947154999 hours
+2024-10-05 01:03:04,849 - app - INFO - Processing issue: Motor Failure
+2024-10-05 01:03:04,849 - app - INFO - Calculated RPN: 84
+2024-10-05 01:03:04,941 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 7, 'occurrence': 2, 'detection': 6}, Predicted Time: 0.33
+2024-10-05 01:03:04,941 - app - INFO - Prediction successful: 0.3270423710346222 hours
+2024-10-05 01:03:31,443 - app - INFO - Processing issue: Overheating
+2024-10-05 01:03:31,443 - app - INFO - Calculated RPN: 84
+2024-10-05 01:03:31,524 - app - INFO - Input: {'description': 'Overheating', 'severity': 7, 'occurrence': 2, 'detection': 6}, Predicted Time: 0.33
+2024-10-05 01:03:31,524 - app - INFO - Prediction successful: 0.3270423710346222 hours
+2024-10-05 01:03:37,497 - app - INFO - Processing issue: Overheating
+2024-10-05 01:03:37,497 - app - INFO - Calculated RPN: 36
+2024-10-05 01:03:37,573 - app - INFO - Input: {'description': 'Overheating', 'severity': 3, 'occurrence': 2, 'detection': 6}, Predicted Time: 0.26
+2024-10-05 01:03:37,573 - app - INFO - Prediction successful: 0.2609483599662781 hours
+2024-10-05 01:06:08,987 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 01:06:08,987 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 01:09:31,118 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 01:09:31,118 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 01:09:34,559 - app - INFO - Processing issue: Motor
+2024-10-05 01:09:34,560 - app - INFO - Calculated RPN: 64
+2024-10-05 01:09:35,286 - app - INFO - Input: {'description': 'Motor', 'severity': 4, 'occurrence': 4, 'detection': 4}, Predicted Time: 0.26
+2024-10-05 01:09:35,286 - app - INFO - Prediction successful: 0.2580167353153229 hours
+2024-10-05 01:12:27,182 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 01:12:27,182 - app - INFO - Model, scaler, and TFIDF loaded successfully.

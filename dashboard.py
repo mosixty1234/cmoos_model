@@ -18,15 +18,46 @@ logger = logging.getLogger(__name__)
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # Define styles
-input_style = {'margin-bottom': '10px', 'width': '100%', 'padding': '10px', 'font-size': '16px', 'border-radius': '8px'}
-label_style = {'font-weight': 'bold', 'margin-top': '10px', 'display': 'block', 'color': 'black'}
-button_style = {
-    'background-color': '#007BFF', 'color': 'white', 'padding': '12px 28px', 'font-size': '16px', 'border': 'none',
-    'border-radius': '12px', 'cursor': 'pointer', 'width': '100%', 'box-shadow': '0 4px 8px rgba(0, 0, 0, 0.1)',
-    'transition': 'background-color 0.3s ease, transform 0.2s ease', 'text-transform': 'uppercase'
+input_style = {
+    'margin-bottom': '10px', 
+    'width': '100%', 
+    'padding': '10px', 
+    'font-size': '16px', 
+    'border-radius': '8px', 
+    'background-color': '#444',  # Dark grey background for inputs
+    'color': 'white', 
+    'border': '1px solid #555'   # Slightly lighter grey border
 }
-header_style = {'text-align': 'center', 'color': 'black', 'font-family': 'Verdana, sans-serif', 'margin-top': '20px'}
-container_style = {'background': 'linear-gradient(145deg, #292e49, #536976)', 'border-radius': '15px', 'padding': '20px'}
+label_style = {
+    'font-weight': 'bold', 
+    'margin-top': '10px', 
+    'display': 'block', 
+    'color': 'white'
+}
+button_style = {
+    'background-color': '#007BFF', 
+    'color': 'white', 
+    'padding': '12px 28px', 
+    'font-size': '16px', 
+    'border': 'none',
+    'border-radius': '12px', 
+    'cursor': 'pointer', 
+    'width': '100%', 
+    'box-shadow': '0 4px 8px rgba(0, 0, 0, 0.1)',
+    'transition': 'background-color 0.3s ease, transform 0.2s ease', 
+    'text-transform': 'uppercase'
+}
+header_style = {
+    'text-align': 'center', 
+    'color': 'white', 
+    'font-family': 'Verdana, sans-serif', 
+    'margin-top': '20px'
+}
+container_style = {
+    'background': 'linear-gradient(145deg, #1c1c1c, #444)', 
+    'border-radius': '15px', 
+    'padding': '20px'
+}
 
 # App layout
 app.layout = dbc.Container(
@@ -47,7 +78,7 @@ app.layout = dbc.Container(
                     html.Label("Total Downtime (hours)", style=label_style),
                     dcc.Input(id='downtime', type='number', min=0, value=1, style=input_style),
                     html.Label("Calculated RPN (0 to 100)", style=label_style),
-                    html.Div(id='calculated_rpn', style={'font-weight': 'bold', 'margin-top': '10px'}),
+                    html.Div(id='calculated_rpn', style={'font-weight': 'bold', 'margin-top': '10px', 'color': 'white'}),
                     html.Button('Submit prediction', id='submit-val', n_clicks=0, style=button_style),
                 ], style=container_style),
                 width=6
@@ -56,8 +87,8 @@ app.layout = dbc.Container(
             className='mt-5'
         ),
 
-        html.Div(id='status-message', style={'margin-top': '20px', 'text-align': 'center', 'font-size': '18px'}),
-        dcc.Loading(id="loading", type="circle", children=html.Div(id='prediction-output', style={'margin-top': '30px', 'text-align': 'center', 'font-size': '18px'})),
+        html.Div(id='status-message', style={'margin-top': '20px', 'text-align': 'center', 'font-size': '18px', 'color': 'white'}),
+        dcc.Loading(id="loading", type="circle", children=html.Div(id='prediction-output', style={'margin-top': '30px', 'text-align': 'center', 'font-size': '18px', 'color': 'white'})),
 
         dbc.Row(
             dbc.Col(dcc.Graph(id='issue-frequency-chart'), width=8),
@@ -65,7 +96,8 @@ app.layout = dbc.Container(
             className='mt-5'
         )
     ],
-    fluid=True
+    fluid=True,
+    style={'backgroundColor': 'black', 'minHeight': '100vh', 'color': 'white'}  # Set the overall background to black
 )
 
 @app.callback(
@@ -82,7 +114,7 @@ def update_output(n_clicks_submit, severity, occurrence, detection, issue_desc, 
     rpn = severity * occurrence * detection
     rpn = max(0, min(rpn, 100))  # Cap RPN between 0 and 100
 
-    rpn_display = f"{rpn} (RPN = Severity x Occurrence x Detection)"
+    rpn_display = f"RPN = {rpn}"  # Updated display format for RPN
 
     if n_clicks_submit > 0:
         logger.info(f"User submitted issue: {issue_desc}, Severity: {severity}, Occurrence: {occurrence}, Detection: {detection}, Downtime: {downtime}, RPN: {rpn}")
@@ -110,10 +142,10 @@ def update_output(n_clicks_submit, severity, occurrence, detection, issue_desc, 
 
             if 'predicted_time' in result and 'weighted_time' in result and 'recommended_solution' in result:
                 prediction_output = [
-                    html.H2(f"Issue Description: {issue_desc}"),
-                    html.P(f"Predicted Time to Fix: {result['predicted_time']:.2f} hours"),
-                    html.P(f"Weighted Time: {result['weighted_time']:.2f} hours"),
-                    html.P(f"Recommendation: {result['recommended_solution']}")
+                    html.H2(f"Issue Description: {issue_desc}", style={'color': 'white'}),
+                    html.P(f"Predicted Time to Fix: {result['predicted_time']:.2f} hours", style={'color': 'white'}),
+                    html.P(f"Weighted Time: {result['weighted_time']:.2f} hours", style={'color': 'white'}),
+                    html.P(f"Recommendation: {result['recommended_solution']}", style={'color': 'white'})
                 ]
 
                 # Prepare mock data for issue frequency chart
