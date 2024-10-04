@@ -1,4 +1,4 @@
-
+# Import necessary libraries for data manipulation, model building, and evaluation.
 import numpy as np
 import pandas as pd
 import re
@@ -32,11 +32,11 @@ nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
 nltk.download('punkt')
 
-# Set up logging
+#Set up logging to monitor model training and evaluation processe
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Update solutions dictionary with additional issues and their corresponding solutions
+#  Define a dictionary of common mechanical issues and their recommended solutions for better interpretability.
 solutions = {
    'motor': 'Replace motor bearings and test alignment.',
    'pump': 'Check pump seals and replace if necessary.',
@@ -56,7 +56,7 @@ solutions = {
    'fluid': 'Check fluid levels and top up if required.'
 }
 
-# Additional data entries for improving model robustness (ensure all lists are of the same length)
+#  Create a new dataset of machine issues to improve the model's robustness by including diverse scenarios
 new_data = {
     "description": [
         "Failure in motor", "Pump leakage", "Equipment overheating", 
@@ -117,14 +117,14 @@ def preprocess_text(text):
     tokens = [lemmatizer.lemmatize(word) for word in tokens]
     return ' '.join(tokens)
 
-# Create DataFrame and calculate RPN
+# Create a DataFrame from the new data and calculate the Risk Priority Number (RPN) to quantify risks associated with equipment issues
 df = pd.DataFrame(new_data)
 df['RPN'] = df['severity'] * df['occurrence'] * df['detection'] / 1000  # Normalized RPN for scale
 
-# Preprocess text data
+# Preprocess the description text to improve input quality for the model.
 df['description'] = df['description'].apply(preprocess_text)
 
-# Data Augmentation
+# Augment the dataset with new descriptions to ensure a richer training set for better model performance
 df_augmented = df.copy()
 df_augmented['description'] = df_augmented['description'].apply(lambda x: synonym_replacement(x, n=1))
 df = pd.concat([df, df_augmented], ignore_index=True)
@@ -133,7 +133,7 @@ df = pd.concat([df, df_augmented], ignore_index=True)
 tfidf = TfidfVectorizer(max_features=20)
 X_text = tfidf.fit_transform(df['description'].values).toarray()
 
-# Combine numeric features for modeling
+# Combine numeric features with text data for comprehensive input to the mode
 numeric_features = df[['severity', 'occurrence', 'detection', 'total_downtime', 'timeframe_to_fix', 'equipment_age', 'environment_temp']].values
 scaler = StandardScaler()
 numeric_features_scaled = scaler.fit_transform(numeric_features)
@@ -155,7 +155,7 @@ if not os.path.exists(GLOVE_PATH):
     file_id = '1GiBauOchTROVKnRMtfGAjtiTC55apMgg'  # Replace with your actual file ID if necessary
     gdown.download(f'https://drive.google.com/uc?id={file_id}', GLOVE_PATH, quiet=False)
 
-# Function to load pre-trained GloVe embeddings
+# Load pre-trained GloVe embeddings to enhance the model's understanding of textual data.
 def load_glove_embeddings(file_path, embedding_dim):
     embeddings_index = {}
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -167,12 +167,12 @@ def load_glove_embeddings(file_path, embedding_dim):
     return embeddings_index
 
 
-# Load the GloVe embeddings
+#
 print("Loading GloVe embeddings...")
 embeddings_index = load_glove_embeddings(GLOVE_PATH, EMBEDDING_DIM)
 print(f"Found {len(embeddings_index)} word vectors.")
 
-# Tokenizer for your dataset
+# Set parameters for embedding and tokenization, crucial for handling the text input effectivel
 tokenizer = Tokenizer(num_words=MAX_VOCAB_SIZE)
 texts = [
 "Overheating in the motor due to prolonged usage.",
@@ -253,10 +253,11 @@ tokenizer.fit_on_texts(texts)
 sequences = tokenizer.texts_to_sequences(texts)
 X_text_seq = pad_sequences(sequences, maxlen=MAX_SEQ_LEN)
 
-# Prepare the embedding matrix
+#Load pre-trained GloVe embeddings to enhance the model's understanding of textual data
 word_index = tokenizer.word_index
 num_words = min(MAX_VOCAB_SIZE, len(word_index) + 1)
 
+# Prepare an embedding matrix that links words to their GloVe vectors for improved training performance
 embedding_matrix = np.zeros((num_words, EMBEDDING_DIM))
 for word, i in word_index.items():
     if i < MAX_VOCAB_SIZE:
@@ -264,15 +265,15 @@ for word, i in word_index.items():
         if embedding_vector is not None:
             embedding_matrix[i] = embedding_vector
             
-# Define target (RPN)
+# Define the target variable (RPN) which the model will learn to predict based on the feature
 rpn = df['RPN'].values
 
-# Train-Test Split
+#Split the dataset into training and testing sets to validate the model's performance on unseen data.
 X_train_text, X_test_text, X_train_num, X_test_num, y_train, y_test = train_test_split(
     X_text_seq, numeric_features_scaled, df['RPN'].values, test_size=0.3, random_state=42
 )
 
-# Define Model Architecture
+# Define the architecture of the model, combining text input and numerical features through a series of layers
 text_input = Input(shape=(MAX_SEQ_LEN,), name='text_input')
 embedding_layer = Embedding(num_words, EMBEDDING_DIM, weights=[embedding_matrix], input_length=MAX_SEQ_LEN, trainable=False)(text_input)
 
@@ -281,7 +282,7 @@ gru_layer = Bidirectional(GRU(128, return_sequences=False, kernel_regularizer=l2
 numeric_input = Input(shape=(7,), name='numeric_input')
 concat_layer = concatenate([gru_layer, numeric_input])
 
-# Adding Dense Layers with Batch Normalization and Dropout
+# Implement dropout and batch normalization to improve model generalization and prevent overfitting
 dense_1 = Dense(256, activation='relu', kernel_regularizer=l2(0.001))(concat_layer)
 batch_norm_1 = BatchNormalization()(dense_1)
 dropout_1 = Dropout(0.4)(batch_norm_1)
@@ -293,11 +294,12 @@ dropout_2 = Dropout(0.4)(batch_norm_2)
 dense_3 = Dense(64, activation='relu', kernel_regularizer=l2(0.001))(dropout_2)
 output_layer = Dense(1)(dense_3)
 
-# Compile the Model
+# CCompile the model using an appropriate optimizer and loss function, focusing on minimizing prediction errors.
 model = Model(inputs=[text_input, numeric_input], outputs=output_layer)
 model.compile(optimizer=Adam(learning_rate=0.001), loss='mse', metrics=['mae'])
 
-# Learning Rate Scheduler
+
+#Implement a learning rate scheduler to adjust the learning rate during training, promoting effective convergence.
 def step_decay(epoch):
     initial_lr = 0.001
     drop = 0.5
@@ -307,25 +309,26 @@ def step_decay(epoch):
 
 lr_scheduler = LearningRateScheduler(step_decay)
 
+#Define callbacks to save the best model and reduce the learning rate based on validation performance
 callbacks = [
     ModelCheckpoint('issue_predictor_model.keras', save_best_only=True, monitor='val_loss'),
     ReduceLROnPlateau(factor=0.2, patience=5, min_lr=1e-6),
     lr_scheduler
 ]
 
-# Train the Model
+# Train the model with the training data while validating its performance on a separate set.
 history = model.fit(
     [X_train_text, X_train_num],
     y_train,
     validation_data=([X_test_text, X_test_num], y_test),
-    epochs=100,
-    batch_size=16,
+    epochs=50,
+    batch_size=32,
     callbacks=callbacks,
     shuffle=True,
     verbose=1
 )
 
-# Plot Loss
+# Plot and visualize the loss during training to assess the model's learning progress.
 plt.figure(figsize=(10, 6))
 plt.plot(history.history['loss'], label='Training Loss')
 plt.plot(history.history['val_loss'], label='Validation Loss')
@@ -337,11 +340,11 @@ plt.grid(True)
 plt.savefig('training_validation_loss_advanced.png')
 plt.show()
 
-# Model Evaluation
+#Evaluate the model on the test set and calculate performance metrics (RMSE and MAE) to quantify its accuracy.
 train_preds = model.predict([X_train_text, X_train_num])
 test_preds = model.predict([X_test_text, X_test_num])
 
-# Metrics Calculation
+# Log the performance metrics for further analysis and to track improvements over time
 train_rmse = np.sqrt(mean_squared_error(y_train, train_preds))
 test_rmse = np.sqrt(mean_squared_error(y_test, test_preds))
 train_mae = mean_absolute_error(y_train, train_preds)
