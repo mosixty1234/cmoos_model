@@ -1,3 +1,4 @@
+
 import numpy as np
 import pandas as pd
 import re
@@ -21,6 +22,8 @@ from nltk.stem import WordNetLemmatizer
 import nltk
 import contractions
 import pickle
+import os
+import gdown
 from textblob import TextBlob
 
 # Download necessary NLTK resources
@@ -145,8 +148,15 @@ tokenizer.fit_on_texts(df['description'])
 X_text_seq = tokenizer.texts_to_sequences(df['description'])
 X_text_seq = pad_sequences(X_text_seq, maxlen=MAX_SEQ_LEN)
 
-# Load pre-trained GloVe embeddings
-def load_glove_embeddings(file_path, vocab_size, embedding_dim):
+# Ensure GloVe file is downloaded
+GLOVE_PATH = 'glove.6B.100d.txt' 
+
+if not os.path.exists(GLOVE_PATH):
+    file_id = '1GiBauOchTROVKnRMtfGAjtiTC55apMgg'  # Replace with your actual file ID if necessary
+    gdown.download(f'https://drive.google.com/uc?id={file_id}', GLOVE_PATH, quiet=False)
+
+# Function to load pre-trained GloVe embeddings
+def load_glove_embeddings(file_path, embedding_dim):
     embeddings_index = {}
     with open(file_path, 'r', encoding='utf-8') as f:
         for line in f:
@@ -156,9 +166,97 @@ def load_glove_embeddings(file_path, vocab_size, embedding_dim):
             embeddings_index[word] = coefs
     return embeddings_index
 
-embeddings_index = load_glove_embeddings('glove.6B.100d.txt', MAX_VOCAB_SIZE, EMBEDDING_DIM)
+
+# Load the GloVe embeddings
+print("Loading GloVe embeddings...")
+embeddings_index = load_glove_embeddings(GLOVE_PATH, EMBEDDING_DIM)
+print(f"Found {len(embeddings_index)} word vectors.")
+
+# Tokenizer for your dataset
+tokenizer = Tokenizer(num_words=MAX_VOCAB_SIZE)
+texts = [
+"Overheating in the motor due to prolonged usage.",
+    "Corrosion detected in the water pump affecting performance.",
+    "High vibrations in the conveyor system causing belt misalignment.",
+    "Unexpected power outage leading to sudden equipment failure.",
+    "Software malfunction causing incorrect output data.",
+    "Oil leakage in the hydraulic system reducing pressure.",
+    "Unusual noise from the gearbox indicating potential bearing failure.",
+    "Electrical short circuit causing frequent tripping.",
+    "Sensor calibration issues leading to inaccurate measurements.",
+    "Cooling system failure causing excessive heat buildup.",
+    "Pump cavitation due to low fluid levels.",
+    "Valve malfunction preventing proper closure of the system.",
+    "Inconsistent readings from the pressure sensor.",
+    "Motor bearings overheating, causing loud grinding noises.",
+    "Compressor failure resulting in reduced output pressure.",
+    "Hydraulic fluid contamination causing irregular actuator movement.",
+    "Severe wear on conveyor belt leading to material loss.",
+    "Fan motor failure resulting in insufficient cooling.",
+    "Overloaded electrical circuit causing frequent breaker trips.",
+    "Air filter clogging reducing airflow efficiency.",
+    "Inconsistent temperature control in the refrigeration unit.",
+    "Frequent jamming in the automated sorting machine.",
+    "Leaking valve in the cooling system, reducing overall performance.",
+    "Rotor imbalance in the motor causing high levels of vibration.",
+    "High humidity leading to condensation buildup in electrical components.",
+    "Worn-out actuator leading to delayed response in control systems.",
+    "Inadequate lubrication in bearings causing overheating.",
+    "Cracked impeller in the pump reducing flow rate.",
+    "Excessive pressure build-up in the boiler system.",
+    "Frequent system reboots caused by software bugs.",
+    "Actuator sticking, resulting in slow valve operation.",
+    "Loose wiring connections causing intermittent power failures.",
+    "Bearing wear causing misalignment in the drive shaft.",
+    "Temperature sensor fault leading to incorrect readings.",
+    "Compressor overheating due to insufficient ventilation.",
+    "Leak in the hydraulic system reducing system pressure.",
+    "Overloaded gear mechanism causing slow movement.",
+    "Clogged exhaust fan reducing air circulation in the system.",
+    "Inconsistent fluid flow in the hydraulic lines.",
+    "Worn bearings in the motor leading to excessive play.",
+    "Insulation failure in electrical components causing shorts.",
+    "Blocked vents leading to overheating of machinery.",
+    "Excessive wear on conveyor rollers affecting operation.",
+    "Inadequate power supply causing frequent resets.",
+    "Failed circuit breaker due to overloaded circuits.",
+    "Insufficient maintenance leading to equipment degradation.",
+    "Unplanned downtime due to sudden equipment failure.",
+    "Failures in the automated control system affecting efficiency.",
+    "Issues with software updates causing compatibility problems.",
+    "Malfunctioning pressure relief valve leading to safety concerns.",
+    "Damage to hydraulic hoses causing fluid leaks.",
+    "Frequent errors in data acquisition systems.",
+    "Misalignment of drive components causing noise.",
+    "Power supply fluctuations affecting sensitive equipment.",
+    "Broken seals in pneumatic systems leading to air loss.",
+    "Routine wear and tear causing operational inefficiencies.",
+    "Overheating of bearings due to lack of lubrication.",
+    "Contaminated hydraulic fluid causing valve stickiness.",
+    "Irregularities in voltage supply affecting motor performance.",
+    "Wear on rubber seals causing leaks in fluid systems.",
+    "Unexpected fluctuations in load affecting stability.",
+    "Electrical grounding issues causing erratic behavior.",
+    "Damaged circuit boards leading to malfunctioning equipment.",
+    "Improperly calibrated gauges giving false readings.", 
+    "Increased wear on the gears due to misalignment.",
+    "Frequent clogging of filters affecting fluid flow.",
+    "Unusual fluctuations in motor speed during operation.",
+    "Overloading of the main circuit causing overheating.",
+    "Improper shutdown procedures leading to system errors.",
+    "Vibration sensors indicating potential mechanical failure.",
+    "Pneumatic actuator not responding to control signals.",
+    "Deterioration of electrical insulation in wiring."]  # Replace this with your actual text data
+tokenizer.fit_on_texts(texts)
+
+# Convert text data to sequences and pad them
+sequences = tokenizer.texts_to_sequences(texts)
+X_text_seq = pad_sequences(sequences, maxlen=MAX_SEQ_LEN)
+
+# Prepare the embedding matrix
 word_index = tokenizer.word_index
 num_words = min(MAX_VOCAB_SIZE, len(word_index) + 1)
+
 embedding_matrix = np.zeros((num_words, EMBEDDING_DIM))
 for word, i in word_index.items():
     if i < MAX_VOCAB_SIZE:
@@ -252,38 +350,17 @@ test_mae = mean_absolute_error(y_test, test_preds)
 logger.info(f"Train RMSE: {train_rmse:.4f}, Train MAE: {train_mae:.4f}")
 logger.info(f"Test RMSE: {test_rmse:.4f}, Test MAE: {test_mae:.4f}")
 
-# SHAP Explanation: Initialize SHAP for model interpretation
-logger.info("Starting SHAP explanation...")
-X_train_combined = np.concatenate((X_train_text, X_train_num), axis=1)  # Combine features for SHAP
+plt.subplot(1, 2, 2)
+plt.plot(history.history['mae'], label='Train MAE')
+plt.plot(history.history['val_mae'], label='Validation MAE')
+plt.title('Model MAE')
+plt.xlabel('Epochs')
+plt.ylabel('MAE')
+plt.legend()
 
-# Use a lambda function for the model prediction in SHAP
-explainer = shap.KernelExplainer(
-    lambda x: model.predict([x[:, :X_train_text.shape[1]], x[:, X_train_text.shape[1]:]]), 
-    X_train_combined
-)
+plt.tight_layout()
+plt.show()
 
-X_test_combined = np.concatenate((X_test_text, X_test_num), axis=1)  # Combine test features for SHAP
-shap_values = explainer.shap_values(X_test_combined)  # Calculate SHAP values for the test set
-
-# Check if SHAP values are in a list and handle accordingly
-if isinstance(shap_values, list):
-    shap_values = shap_values[0]
-
-# Create a list of feature names for visualization
-text_feature_names = [f'TF-IDF_{i}' for i in range(X_train_text.shape[1])]
-numeric_feature_names = ['severity', 'occurrence', 'detection', 'total_downtime', 'timeframe_to_fix', 'equipment_age', 'environment_temp']
-feature_names = text_feature_names + numeric_feature_names  # Combine feature names
-
-# Sort SHAP values by their absolute mean importance
-sort_inds = np.argsort(np.abs(shap_values).mean(0))
-
-# Generate summary plot of SHAP values
-shap.summary_plot(
-    shap_values, 
-    features=X_test_combined, 
-    feature_names=np.array(feature_names),
-    show=False  # Prevent the figure from diplaying
-)
 
 # Save the trained model and necessary scalers for future use
 model.save('issue_predictor_model.keras')

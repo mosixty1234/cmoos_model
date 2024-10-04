@@ -1,29 +1,58 @@
 # Core libraries
-numpy>=1.23.0
-pandas>=1.5.0
-scikit-learn>=1.2.0
-tensorflow>=2.14.0
+numpy
+pandas
+scikit-learn
+tensorflow
 
 # FastAPI and Uvicorn for the API
-fastapi>=0.103.0
-uvicorn>=0.22.0
-pydantic>=2.0.0
+fastapi
+uvicorn
+pydantic
 
 # Visualization libraries
-matplotlib>=3.7.0
-seaborn>=0.12.0
+matplotlib
+seaborn
 
 # HTTP requests
-requests>=2.31.0
+requests
 
 # Dash for the dashboard
-dash>=2.11.0
-
-# Additional Dash dependencies for components and callbacks
-dash-core-components>=2.0.0
-dash-html-components>=2.0.0
-dash-bootstrap-components>=1.3.0
-dash-daq>=0.5.0
+dash
+dash-core-components
+dash-html-components
+dash-bootstrap-components
+dash-daq
 
 # Optional: Gunicorn (if running the app in production)
-gunicorn>=20.1.0
+gunicorn
+
+# Machine Learning libraries
+tensorflow
+scikit-learn
+keras
+
+# Natural Language Processing (NLP)
+nltk
+gensim
+spacy
+shap
+
+# Data manipulation
+numpy
+pandas
+scipy
+
+# Tokenization and Text Vectorization
+tensorflow-text
+
+# Logging
+loguru
+
+# For saving/loading models
+joblib
+
+# For GloVe Embeddings (optional)
+gensim
+
+# Other utilities and dependencies
+python-dotenv

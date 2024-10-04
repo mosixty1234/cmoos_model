@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 *.largefileextension filter=lfs diff=lfs merge=lfs -text
+*.large_file_extension filter=lfs diff=lfs merge=lfs -text
+=======
+*.largefileextension filter=lfs diff=lfs merge=lfs -text
+>>>>>>> 1bfc92f50298a38ed8913efdfc7b69334b857c53
+*.txt filter=lfs diff=lfs merge=lfs -text
