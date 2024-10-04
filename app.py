@@ -1,18 +1,19 @@
 from fastapi import FastAPI, HTTPException, status
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, conint
 import numpy as np
 import pickle
 import logging
 from tensorflow.keras.models import load_model
 from fastapi.middleware.cors import CORSMiddleware
 from functools import lru_cache
+from fastapi.responses import JSONResponse
 import os
 
 # Initialize FastAPI app
 app = FastAPI(
     title="Maintenance Issue Prediction API",
     description="Predicts time to resolve maintenance issues based on description, severity, and other features.",
-    version="2.1.0"
+    version="2.3.0"
 )
 
 # Setup logging
@@ -42,6 +43,7 @@ app.add_middleware(
 @lru_cache()
 def load_assets():
     try:
+        # Load neural network model
         model = load_model(MODEL_PATH)
         with open(SCALER_PATH, 'rb') as scaler_file:
             scaler = pickle.load(scaler_file)
@@ -49,6 +51,9 @@ def load_assets():
             tfidf = pickle.load(tfidf_file)
         logger.info("Model, scaler, and TFIDF loaded successfully.")
         return model, scaler, tfidf
+    except FileNotFoundError as fnfe:
+        logger.error(f"File not found: {fnfe}")
+        raise HTTPException(status_code=500, detail="Model or preprocessing files missing.")
     except Exception as e:
         logger.error(f"Error loading assets: {e}")
         raise HTTPException(status_code=500, detail="Failed to load assets.")
@@ -56,36 +61,31 @@ def load_assets():
 # Request validation using Pydantic
 class MaintenanceIssue(BaseModel):
     description: str
-    severity: int
-    occurrence: int
-    detection: int
+    severity: conint(ge=1, le=10) = Field(..., description="Severity (1-10 scale)")
+    occurrence: conint(ge=1, le=10) = Field(..., description="Occurrence (1-10 scale)")
+    detection: conint(ge=1, le=10) = Field(..., description="Detection (1-10 scale)")
 
 # Calculate RPN dynamically
 def calculate_rpn(severity: int, occurrence: int, detection: int) -> int:
     return severity * occurrence * detection
 
 # Generate recommendation based on severity, RPN, and downtime
-def generate_recommendation(issue: MaintenanceIssue, predicted_time: float, weighted_time: float, rpn: int) -> str:
+def generate_recommendation(issue: MaintenanceIssue, predicted_time: float, rpn: int) -> str:
     if issue.severity >= 8:
-        return (
-            f"The issue has a high severity level ({issue.severity}/10), demanding immediate attention. "
-            f"Predicted resolution time is {predicted_time:.2f} hours, and weighted resolution time is {weighted_time:.2f} hours. "
-            "Consider assigning experienced personnel to mitigate downtime."
-        )
+        recommendation = "High severity issue; urgent response required."
     elif rpn > 200:
-        return (
-            f"High RPN detected ({rpn}/1000), indicating a critical risk. "
-            f"The issue should be resolved in {predicted_time:.2f} hours. Ensure preventive measures are in place "
-            "to avoid recurrence."
-        )
+        recommendation = "Critical issue due to high RPN; prioritize repair."
     else:
-        return (
-            f"Expected resolution time: {predicted_time:.2f} hours. "
-            f"Weighted resolution time: {weighted_time:.2f} hours. Ensure efficient resource allocation."
-        )
+        recommendation = "Issue manageable; proceed with routine fix."
+    
+    # Tailor additional advice based on predicted time
+    if predicted_time > 8:
+        recommendation += " Allocate extra resources for longer repair times."
+    
+    return recommendation
 
 # Predict maintenance issue resolution time
-@app.post("/predict/", response_model=dict, status_code=status.HTTP_200_OK)  # Set explicit status code
+@app.post("/predict/", response_model=dict, status_code=status.HTTP_200_OK)
 async def predict_issue(issue: MaintenanceIssue):
     try:
         logger.info(f"Processing issue: {issue.description}")
@@ -103,45 +103,56 @@ async def predict_issue(issue: MaintenanceIssue):
         # Ensure the TF-IDF vector has the correct shape (None, 50)
         expected_tfidf_shape = 50
         if description_vec.shape[1] < expected_tfidf_shape:
-            # Pad the vector with zeros if it has fewer features than expected
             description_vec = np.pad(description_vec, ((0, 0), (0, expected_tfidf_shape - description_vec.shape[1])), 'constant')
         elif description_vec.shape[1] > expected_tfidf_shape:
-            # Truncate the vector if it has more features than expected
             description_vec = description_vec[:, :expected_tfidf_shape]
 
         # Combine numeric features and scale them
         numeric_features = np.array([[issue.severity, issue.occurrence, issue.detection]])
         numeric_features_scaled = scaler.transform(numeric_features)
 
-        # Model prediction
-        prediction = model.predict([description_vec, numeric_features_scaled])
+        # Main model (neural network) prediction
+        neural_net_prediction = model.predict([description_vec, numeric_features_scaled])
 
-        if prediction is None or len(prediction) == 0:
-            raise ValueError("Model returned an empty prediction")
+        if not neural_net_prediction or np.isnan(neural_net_prediction[0][0]):
+            logger.warning("Model returned an invalid or empty prediction")
+            raise ValueError("Model prediction invalid.")
 
-        predicted_time = float(prediction[0][0])
+        predicted_time_nn = float(neural_net_prediction[0][0])
 
         # Log the input and output of the prediction
-        logger.info(f"Input: {issue.dict()}, Predicted Time: {predicted_time:.2f}")
+        logger.info(f"Input: {issue.dict()}, Neural Net Prediction: {predicted_time_nn:.2f}")
+
+        # Use neural network prediction directly
+        final_predicted_time = predicted_time_nn
 
         # Apply a default frequency weight since issue_frequency is removed
-        frequency_weight = 1  # Default weight since issue_frequency is not included
-        weighted_time = predicted_time * frequency_weight
+        frequency_weight = 1 if issue.occurrence < 5 else 1.2
+        weighted_time = final_predicted_time * frequency_weight
 
         # Generate recommendation
-        recommendation = generate_recommendation(issue, predicted_time, weighted_time, rpn)
+        recommendation = generate_recommendation(issue, final_predicted_time, rpn)
 
-        logger.info(f"Prediction successful: {predicted_time} hours")
+        # Confidence interval for predicted time
+        lower_bound = max(0, final_predicted_time - 0.10 * final_predicted_time)
+        upper_bound = final_predicted_time + 0.10 * final_predicted_time
 
-        # Explicitly return HTTP 200 OK with a message
-        return {
-            "message": "Prediction successful",  # Adding a success message
-            "predicted_time": round(predicted_time, 2),
-            "weighted_time": round(weighted_time, 2),
-            "frequency_weight": frequency_weight,
-            "rpn": rpn,
-            "recommended_solution": recommendation
-        }
+        logger.info(f"Prediction successful: {final_predicted_time} hours")
+
+        # Explicitly returning a JSONResponse with status code 200
+        return JSONResponse(
+            status_code=status.HTTP_200_OK,
+            content={
+                "message": "Prediction successful",
+                "predicted_time": round(final_predicted_time, 2),
+                "lower_bound_time": round(lower_bound, 2),
+                "upper_bound_time": round(upper_bound, 2),
+                "weighted_time": round(weighted_time, 2),
+                "frequency_weight": frequency_weight,
+                "rpn": rpn,
+                "recommended_solution": recommendation
+            }
+        )
     except ValueError as ve:
         logger.error(f"Validation error: {ve}")
         raise HTTPException(status_code=400, detail=str(ve))

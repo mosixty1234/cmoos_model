@@ -376,3 +376,79 @@
 2024-10-05 01:09:35,287 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 247
 2024-10-05 01:12:15,055 - INFO - Dash is running on http://127.0.0.1:8050/
 
+2024-10-05 01:16:59,009 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-05 01:17:18,215 - INFO - User submitted issue: Motor Failure, Severity: 8, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 100
+2024-10-05 01:17:18,217 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:17:18,971 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 229
+2024-10-05 01:18:03,153 - INFO - User submitted issue: Motor Failure, Severity: 8, Occurrence: 4, Detection: 4, Downtime: 6, RPN: 100
+2024-10-05 01:18:03,154 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:18:03,249 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 229
+2024-10-05 01:18:13,358 - INFO - User submitted issue: Motor Failure, Severity: 8, Occurrence: 2, Detection: 4, Downtime: 6, RPN: 64
+2024-10-05 01:18:13,359 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:18:13,431 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 227
+2024-10-05 01:18:19,962 - INFO - User submitted issue: Motor Failure, Severity: 8, Occurrence: 1, Detection: 4, Downtime: 6, RPN: 32
+2024-10-05 01:18:19,963 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:18:20,062 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 228
+2024-10-05 01:18:25,602 - INFO - User submitted issue: Motor Failure, Severity: 2, Occurrence: 1, Detection: 4, Downtime: 6, RPN: 8
+2024-10-05 01:18:25,603 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:18:25,696 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 222
+2024-10-05 01:27:11,847 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-05 01:27:23,301 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-05 01:27:23,306 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:27:23,712 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-05 01:27:23,712 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:27:24,430 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 225
+2024-10-05 01:27:24,579 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 225
+2024-10-05 01:27:31,284 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-05 01:27:31,286 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:27:31,429 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 225
+2024-10-05 01:41:11,311 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-05 01:41:20,028 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-05 01:41:20,031 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:41:20,135 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 225
+2024-10-05 01:41:24,525 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-05 01:41:24,526 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:41:24,603 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 225
+2024-10-05 01:47:05,786 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-05 01:47:15,792 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-05 01:47:15,797 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:47:15,943 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 225
+2024-10-05 01:47:16,409 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-05 01:47:16,409 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:47:16,550 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 225
+2024-10-05 01:47:17,704 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-05 01:47:17,706 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:47:17,842 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 225
+2024-10-05 01:47:18,396 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-05 01:47:18,399 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:47:18,527 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 225
+2024-10-05 01:56:41,102 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-05 01:56:50,646 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-05 01:56:50,648 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:56:50,724 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 225
+2024-10-05 01:56:58,120 - INFO - User submitted issue: Motor Failure, Severity: 7, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 100
+2024-10-05 01:56:58,121 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:56:58,206 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 225
+2024-10-05 01:57:02,288 - INFO - User submitted issue: Motor Failure, Severity: 9, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 100
+2024-10-05 01:57:02,290 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:57:02,373 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 229
+2024-10-05 01:57:13,491 - INFO - User submitted issue: Motor Failure, Severity: 8, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 100
+2024-10-05 01:57:13,493 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:57:13,588 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 228
+2024-10-05 01:57:17,651 - INFO - User submitted issue: Motor Failure, Severity: 8, Occurrence: 4, Detection: 4, Downtime: 2, RPN: 100
+2024-10-05 01:57:17,652 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:57:17,740 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 228
+2024-10-05 01:57:24,605 - INFO - User submitted issue: Motor Failure, Severity: 8, Occurrence: 4, Detection: 4, Downtime: 0, RPN: 100
+2024-10-05 01:57:24,607 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:57:24,707 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 228
+2024-10-05 01:57:31,773 - INFO - User submitted issue: Motor Failure, Severity: 8, Occurrence: 4, Detection: 7, Downtime: 0, RPN: 100
+2024-10-05 01:57:31,774 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:57:31,855 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 229
+2024-10-05 01:57:34,616 - INFO - User submitted issue: Motor Failure, Severity: 8, Occurrence: 4, Detection: 7, Downtime: 0, RPN: 100
+2024-10-05 01:57:34,618 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-05 01:57:34,704 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 229

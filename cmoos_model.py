@@ -10,6 +10,7 @@ from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.regularizers import l2
 from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, LearningRateScheduler
 from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import mean_squared_error, mean_absolute_error
@@ -364,12 +365,10 @@ plt.legend()
 plt.tight_layout()
 plt.show()
 
-
 # Save the trained model and necessary scalers for future use
 model.save('issue_predictor_model.keras')
 with open('scaler.pkl', 'wb') as f:
     pickle.dump(scaler, f)
 with open('tfidf.pkl', 'wb') as f:
     pickle.dump(tfidf, f)
-
 logger.info("Model and scalers saved successfully.")
