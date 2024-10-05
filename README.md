@@ -1,4 +1,4 @@
-# CMOOS MODEL for prediction maintanence
+ CMOOS MODEL for prediction maintanence
 
 # Table of Contents
 
@@ -92,7 +92,9 @@ This project aims to predict the Risk Priority Number (RPN) for equipment-relate
 
 *install the required Python packages*
 
-pip install -r requirements.txt 
+```bash
+pip install -r requirements.txt
+``` 
 
  2. Download GloVe Embeddings
 The project uses pre-trained GloVe embeddings. If not present, the embeddings will be automatically downloaded by the script.
