@@ -690,3 +690,5 @@
 2024-10-05 01:57:34,620 - app - INFO - Calculated RPN: 224
 2024-10-05 01:57:34,688 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 8, 'occurrence': 4, 'detection': 7}, Neural Net Prediction: 0.28
 2024-10-05 01:57:34,688 - app - INFO - Prediction successful: 0.27827566862106323 hours
+2024-10-05 15:42:09,438 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-05 15:42:09,454 - app - INFO - Model, scaler, and TFIDF loaded successfully.

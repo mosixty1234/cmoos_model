@@ -1,3 +1,4 @@
+
  CMOOS MODEL for prediction maintanence
 
 # Table of Contents
@@ -11,8 +12,9 @@
 7. [Example Dataset](#example-dataset)
 8. [Features Description](#features-description)
 9. [Performance Metrics](#performance-metrics)
-10. [Future Improvements](#future-improvements)
-11. [Conclusion](#conclusion)
+10. [API Overview](#api-overview)
+11. [Future Improvements](#future-improvements)
+12. [Conclusion](#conclusion)
 
 
 # Project Overview
@@ -163,6 +165,123 @@ Example Dataset
 - Test MAE: Quantifies prediction error on test data.
 
 
+# API Overview
+
+This project also includes an API built using FastAPI to predict the Risk Priority Number (RPN) and provide maintenance issue resolution times based on textual descriptions and numeric features like severity, occurrence, and detection
+
+**Key Features of the API**:
+
+- Predict RPN: Combines numeric features and text description to predict the RPN of an issue.
+Predict Time to Resolve: Uses a trained neural network to predict the time it will take to resolve an issue.
+
+- Generate Recommendations: Based on the severity, RPN, and predicted time, the API offers tailored maintenance recommendations.
+
+- CORS Support: Configured to allow cross-origin requests for ease of integration during development.
+
+**API Endpoints**
+
+1. Root Endpoint.
+
+GET /
+
+*Description: Welcome message to confirm the API is running*.
+
+Response
+
+```json
+{
+  "message": "Welcome to the Maintenance Issue Prediction API!"
+}
+```
+
+2. Predict Issue Resolution Time
+
+POST /predict/
+
+*Description: Predicts the maintenance issue resolution time and calculates RPN based on the input.*
+
+Request Body:
+
+```json
+{
+  "description": "Motor failure",
+  "severity": 8,
+  "occurrence": 6,
+  "detection": 5
+}
+```
+- ```description```: Textual  description of the issue.
+
+- ```severity```: Numeric rating for the severity (1-10 scale).
+
+- ```occurrence```: Numeric rating indicating how often the issue occurs (1-10 scale).
+
+- ```detection```: Numeric rating for how easily the issue can be detected (1-10 scale).
+
+*Response*
+
+```json
+{
+  "message": "Prediction successful",
+  "predicted_time": 7.8,
+  "lower_bound_time": 7.02,
+  "upper_bound_time": 8.58,
+  "weighted_time": 9.36,
+  "frequency_weight": 1.2,
+  "rpn": 240,
+  "recommended_solution": "High severity issue; urgent response required. Allocate extra resources for longer repair times."
+}
+```
+- ```predicted_time```: Predicted hours to resolve the issue.
+
+- ```lower_bound_time```: Lower bound of the confidence interval for the predicted time.
+
+- ```upper_bound_time```: Upper bound of the confidence interval for the predicted time.
+
+- ```weighted_time```: Adjusted time based on frequency of occurrence.
+- ```rpn```: Calculated Risk Priority Number.
+
+- ```recommended_solution```: Suggested action based on severity, RPN, and estimated repair time.
+
+# API Installation and Usage
+
+1. Clone the Repository
+
+```bash 
+git clone https://github.com/mosixty1234/cmoos_model-api.git
+```
+
+2. Install Requirements
+**Ensure you have Python 3.8+ installed. Install dependencies using pip:**
+
+```bash 
+pip install -r requirements.txt
+```
+3. Start the api
+
+*You can run the FastAPI application using Uvicorn:*
+
+```bash
+python3 -m uvicorn app:app --reload
+```
+
+4. Access the API Documentation
+
+*After starting the server, you can explore the API and try requests directly via the interactive documentation at:*
+
+- Swagger UI:http://localhost:8000/docs
+
+# Environment Variables
+
+*The application relies on several environment variables to load the necessary assets. These can be set in a .env file*:
+
+- ```MODEL_PATH```: Path to the saved neural network model (default: issue_predictor_model.keras).
+
+- ```SCALER_PATH ```: Path to the scaler file for numeric features (default: scaler.pkl).
+
+- ```TFIDF_PATH```: Path to the TF-IDF vectorizer for text features(default: tfidf.pkl)..
+
+
 # Future Improvements
 
 - More Robust Augmentation: Explore advanced text augmentation techniques like back-translation.
@@ -174,3 +293,4 @@ Example Dataset
 # Conclusion
 
 This project showcases a hybrid approach combining deep learning for text data and machine learning for numeric features to predict the Risk Priority Number. The model's ability to generalize from diverse input sources makes it highly adaptable to various industrial applications.
+
