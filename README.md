@@ -96,7 +96,7 @@ The model will train on the text descriptions and numeric data to predict RPN va
 4. Visualize Model Training.
 *After training, a plot of the training vs validation loss will be generated*:
 
-[training_validation_loss_advanced.png](training_validation_loss_advanced.png)
+![training_validation_loss_advanced.png](training_validation_loss_advanced.png)
 
 5. Evaluate the Model
 *Once trained, the model will predict RPN values on unseen test data. The performance metrics (RMSE, MAE) will be logged in the console*.
