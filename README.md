@@ -96,7 +96,7 @@ The model will train on the text descriptions and numeric data to predict RPN va
 4. Visualize Model Training.
 *After training, a plot of the training vs validation loss will be generated*:
 
-png
+![Visual] training_validation_loss_advanced.png
 
 5. Evaluate the Model
 *Once trained, the model will predict RPN values on unseen test data. The performance metrics (RMSE, MAE) will be logged in the console*.
@@ -104,7 +104,29 @@ png
 
 Example Dataset
 
+| Description            | Severity | Occurrence | Detection | RPN   |
+|------------------------|----------|------------|-----------|-------|
+| Motor failure           | 8        | 6          | 5         | 0.24  |
+| Pump leakage            | 5        | 7          | 4         | 0.14  |
+| Equipment overheating   | 7        | 8          | 6         | 0.34  |
+| Sensor malfunction      | 4        | 3          | 7         | 0.084 |
+
+
 **Note: This dataset is augmented using synonym replacement to create diverse variations.**
+
+ *Features Description*
+
+- **Description**: Textual description of the failure or issue.
+
+- **Severity**: Numeric rating of the severity of the failure (1-10).
+- **Occurrence**: Numeric rating indicating the frequency of the failure (1-10).
+
+- **Detection**: Numeric rating representing how likely it is to detect the failure before it happens (1-10).
+
+- **RPN (Target)**: Risk Priority Number, calculated as:
+  \[
+  \text{RPN} = \frac{\text{Severity} \times \text{Occurrence} \times \text{Detection}}{1000}
+  \]
 
 
 # Performance Metrics
