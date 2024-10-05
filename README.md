@@ -22,9 +22,7 @@
 10. [Future Improvements](#future-improvements)
 11. [Conclusion](#conclusion)
 
-
-
-#Project Overview
+# Project Overview
 
 This project aims to predict the Risk Priority Number (RPN) for equipment-related issues using a hybrid model combining both textual descriptions and numeric features. The goal is to improve predictive accuracy for equipment failure, leveraging deep learning and machine learning techniques. The project includes text preprocessing, data augmentation, GloVe embedding integration, and a combination of a GRU-based neural network for text and a fully connected layer for numeric data.
 # Key Features
@@ -53,7 +51,7 @@ This project aims to predict the Risk Priority Number (RPN) for equipment-relate
 - [training_validation_loss_advanced.png](training_validation_loss_advanced.png)*: Visualizes the model loss across epochs.
 
 
-## Libraries Used
+# Libraries Used
 - **TensorFlow / Keras**: For building the neural network model.
 
 - **scikit-learn**: For machine learning utilities like data splitting, scaling, and model evaluation.
@@ -86,7 +84,7 @@ This project aims to predict the Risk Priority Number (RPN) for equipment-relate
 
 - Outputs a predicted RPN value based on combined text and numeric data.
 
-4. #Model Training:
+4. # Model Training:
 
 - The model is trained on the processed data using Mean Squared Error (MSE) as the loss function and Adam optimizer.
 
@@ -97,17 +95,17 @@ This project aims to predict the Risk Priority Number (RPN) for equipment-relate
 
 # Usage Instructions 
 
-# 1.Set Up Environment
+1. Set Up Environment
 
 *install the required Python packages*
 
 pip install -r requirements.txt 
 
-2.  Download GloVe Embeddings
+# 2 Download GloVe Embeddings
 
 The project uses pre-trained GloVe embeddings. If not present, the embeddings will be automatically downloaded by the script.
 
-3. Train the Model.
+# 3. Train the Model.
 
 *Run the cmoos script to train the 
 prediction model*:
