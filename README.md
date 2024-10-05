@@ -13,8 +13,14 @@
 8. [Features Description](#features-description)
 9. [Performance Metrics](#performance-metrics)
 10. [API Overview](#api-overview)
-11. [Future Improvements](#future-improvements)
-12. [Conclusion](#conclusion)
+11. [API Installation and Usage](#api-installation-and-usage)
+12. [Environment Variables](#environment-variables)
+13. [Dashboard Features](#dashboard-features)
+14. [Running the Dashboard](#running-the-dashboard)
+15. [Key Code Components](#key-code-components)
+16. [Logging](#logging)
+17. [Future Improvements](#future-improvements)
+18. [Conclusion](#conclusion)
 
 
 # Project Overview
@@ -282,6 +288,80 @@ python3 -m uvicorn app:app --reload
 - ```TFIDF_PATH```: Path to the TF-IDF vectorizer for text features(default: tfidf.pkl)..
 
 
+# Dashboard Overview
+
+This project includes a Dashboard built with Plotly Dash to interact with the Maintenance Issue Prediction API. The dashboard allows users to enter details about a maintenance issue, get predictions on the time needed to resolve the issue, and receive recommendations based on the predicted Risk Priority Number (RPN).
+
+# Dashboard Features
+
+- Input Fields:
+
+  - Issue Description: Textual description of the maintenance issue.
+
+   - Severity, Occurrence,   Detection: Numeric inputs on a scale from 1-10 to represent the severity, likelihood of occurrence, and detection capability.
+
+  - Total Downtime: Numeric input representing the estimated downtime in hours.
+
+
+- RPN Calculation:
+
+  - Automatically calculates and displays the Risk Priority Number (RPN) based on the severity, occurrence, and detection values entered
+
+- Prediction Output:
+
+  - Displays the predicted time to resolve the issue.
+
+  - Provides a weighted estimate based on occurrence.
+
+  - Offers a recommendation to address the issue.
+
+- Issue Frequency Chart:
+
+  - Visualizes the frequency of common maintenance issues using a bar chart.
+
+
+# Running the Dashboard
+
+*Prerequisites: Ensure the following Python packages are installed:*
+
+```bash
+pip install dash plotly pandas requests dash-bootstrap-components
+```
+# Steps to Run
+
+1. Start the FastAPI Prediction API
+*Ensure the FastAPI prediction API is running locally (or replace the API_URL in the code if hosted elsewhere). Use the following command to start the API server:*
+
+```bash
+python3 -m uvicorn app:app --reload
+```
+
+2. Run the Dash Application
+*Execute the dashboard application using the command*:
+
+```bash
+python3 dashboard.py
+```
+
+3. Open the Dashboard.
+
+**Open your web browser and navigate to http://127.0.0.1:8050 to access the dashboard.**
+
+
+# Key Code Components
+
+*The dashboard integrates the following key components*: 
+
+1. API Integration: Connects to the FastAPI endpoint to submit issue details and retrieve predictions.
+
+2. Interactive Input Form: Collects user inputs for maintenance issue details and calculates the RPN dynamically.
+
+3. Issue Frequency Chart: Displays a bar chart using Plotly to represent the frequency of common issues.
+
+# Logging
+
+The dashboard logs key actions and errors in the dash_app.log file. Check this file for troubleshooting information if any issues arise while running the application.
+
 # Future Improvements
 
 - More Robust Augmentation: Explore advanced text augmentation techniques like back-translation.
@@ -293,4 +373,3 @@ python3 -m uvicorn app:app --reload
 # Conclusion
 
 This project showcases a hybrid approach combining deep learning for text data and machine learning for numeric features to predict the Risk Priority Number. The model's ability to generalize from diverse input sources makes it highly adaptable to various industrial applications.
-
