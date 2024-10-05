@@ -130,8 +130,3 @@ Example Dataset
 # Conclusion
 
 This project showcases a hybrid approach combining deep learning for text data and machine learning for numeric features to predict the Risk Priority Number. The model's ability to generalize from diverse input sources makes it highly adaptable to various industrial applications.
-# CMOOS MODEL for prediction maintanence
-
-Project Overview
-
-This project aims to predict the Risk Priority Number (RPN) for equipment-related issues using a hybrid model combining both textual descriptions and numeric features. The goal is to improve predictive accuracy for equipment failure, leveraging deep learning and machine learning techniques. The project includes text preprocessing, data augmentation, GloVe embedding integration, and a combination of a GRU-based neural network for text and a fully connected layer for numeric data.
