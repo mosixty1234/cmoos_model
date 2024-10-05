@@ -1,26 +1,19 @@
 # CMOOS MODEL for prediction maintanence
 
 # Table of Contents
+
 1. [Project Overview](#project-overview)
 2. [Key Features](#key-features)
 3. [Project Files](#project-files)
 4. [Libraries Used](#libraries-used)
 5. [Project Structure](#project-structure)
-   1. [Data Preprocessing](#data-preprocessing)
-   2. [TF-IDF Vectorization](#tf-idf-vectorization)
-   3. [Model Architecture](#model-architecture)
-   4. [Model Training](#model-training)
 6. [Usage Instructions](#usage-instructions)
-   1. [Set Up Environment](#set-up-environment)
-   2. [Download GloVe Embeddings](#download-glove-embeddings)
-   3. [Train the Model](#train-the-model)
-   4. [Visualize Model Training](#visualize-model-training)
-   5. [Evaluate the Model](#evaluate-the-model)
 7. [Example Dataset](#example-dataset)
 8. [Features Description](#features-description)
 9. [Performance Metrics](#performance-metrics)
 10. [Future Improvements](#future-improvements)
 11. [Conclusion](#conclusion)
+
 
 # Project Overview
 
