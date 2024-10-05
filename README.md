@@ -19,15 +19,15 @@ This project aims to predict the Risk Priority Number (RPN) for equipment-relate
 
 # Project Files
 
-- *cmoos_model.py*: Contains the code to preprocess data, build the model, and train prediction model.
+- *[cmoos_model.py]*: Contains the code to preprocess data, build the model, and train prediction model.
 
 - *glove.6B.100d.txt*: Pre-trained GloVe embeddings used for text input.
 
 **NB: The file will automatically download when running the model**
 
-- *issue_predictor_model.keras*: The saved best model during training.
+- *[issue_predictor_model.keras]*: The saved best model during training.
 
-- *training_validation_loss_advanced.png*: Visualizes the model loss across epochs.
+- [training_validation_loss_advanced.png]*: Visualizes the model loss across epochs.
 
 
 ## Libraries Used
