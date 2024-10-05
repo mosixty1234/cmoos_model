@@ -18,7 +18,8 @@
 # Project Overview
 
 Project Description
-The CMOOS model is developed to predict the Risk Priority Number (RPN) for equipment-related issues by combining both deep learning and machine learning techniques. It processes two types of data: textual descriptions of equipment problems and numeric features such as severity, occurrence, and detection. Through the integration of natural language processing (NLP) and numeric data fusion, the model aims to significantly enhance the accuracy of equipment failure predictions, helping to improve maintenance strategies.
+
+- The CMOOS model is developed to predict the Risk Priority Number (RPN) for equipment-related issues by combining both deep learning and machine learning techniques. It processes two types of data: textual descriptions of equipment problems and numeric features such as severity, occurrence, and detection. Through the integration of natural language processing (NLP) and numeric data fusion, the model aims to significantly enhance the accuracy of equipment failure predictions, helping to improve maintenance strategies.
 
 Key components of the project include the use of pre-trained GloVe embeddings to capture the semantic meaning of the text data and the application of a hybrid model structure. This structure consists of a GRU-based neural network for processing text inputs and fully connected layers for numeric data, making the model capable of predicting both the likelihood and the severity of equipment failures in various industrial environments.
 
