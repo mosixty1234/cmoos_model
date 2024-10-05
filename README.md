@@ -94,9 +94,9 @@ This project aims to predict the Risk Priority Number (RPN) for equipment-relate
 
 pip install -r requirements.txt 
 
-2 Download GloVe Embeddings
-
+ 2. Download GloVe Embeddings
 The project uses pre-trained GloVe embeddings. If not present, the embeddings will be automatically downloaded by the script.
+
 3. Train the Model.
 
 *Run the cmoos script to train the 
