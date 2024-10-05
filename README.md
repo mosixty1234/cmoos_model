@@ -17,18 +17,23 @@
 
 # Project Overview
 
-This project aims to predict the Risk Priority Number (RPN) for equipment-related issues using a hybrid model combining both textual descriptions and numeric features. The goal is to improve predictive accuracy for equipment failure, leveraging deep learning and machine learning techniques. The project includes text preprocessing, data augmentation, GloVe embedding integration, and a combination of a GRU-based neural network for text and a fully connected layer for numeric data.
-# Key Features
+Project Description
+The CMOOS model is developed to predict the Risk Priority Number (RPN) for equipment-related issues by combining both deep learning and machine learning techniques. It processes two types of data: textual descriptions of equipment problems and numeric features such as severity, occurrence, and detection. Through the integration of natural language processing (NLP) and numeric data fusion, the model aims to significantly enhance the accuracy of equipment failure predictions, helping to improve maintenance strategies.
 
-- Text Data Augmentation: Uses synonym replacement to augment the dataset and create robust training samples.
+Key components of the project include the use of pre-trained GloVe embeddings to capture the semantic meaning of the text data and the application of a hybrid model structure. This structure consists of a GRU-based neural network for processing text inputs and fully connected layers for numeric data, making the model capable of predicting both the likelihood and the severity of equipment failures in various industrial environments.
 
-- Numeric and Text Feature Fusion: Combines text descriptions of issues with numeric features (severity, occurrence, detection).
 
-- Pre-trained GloVe Embeddings: Embeds the text data using GloVe vectors to capture semantic meaning.
+**Goal**
 
-- Hybrid Model: A deep learning model incorporating Bidirectional GRU for text and fully connected layers for numeric data.
+The overarching goal of this project is to build an intelligent prediction system that:
 
-- Learning Rate Scheduler: Dynamically adjusts the learning rate during training to improve model convergence.
+- Accurately predicts Risk Priority Numbers (RPN): By fusing textual issue descriptions with numeric data, the model can generate reliable RPN scores to assess the risk associated with potential equipment failures.Enhances maintenance strategies: By providing accurate predictions, the model can help maintenance teams prioritize tasks more effectively.
+
+- Utilizes deep learning for textual data: Incorporating pre-trained embeddings and a GRU network to handle text inputs, ensuring the model extracts meaningful information from equipment failure descriptions.
+
+- Optimizes model performance: Leveraging advanced techniques such as data augmentation for text inputs, and implementing a dynamic learning rate scheduler to ensure efficient training and strong generalization on new, unseen data.
+
+Ultimately, the CMOOS model aims to be a robust, predictive tool for industrial maintenance applications, helping companies anticipate and address equipment failures before they escalate into costly issues.
 
 
 # Project Files
@@ -96,7 +101,7 @@ This project aims to predict the Risk Priority Number (RPN) for equipment-relate
 pip install -r requirements.txt
 ``` 
 
- 2. Download GloVe Embeddings
+2. Download GloVe Embeddings
 The project uses pre-trained GloVe embeddings. If not present, the embeddings will be automatically downloaded by the script.
 
 3. Train the Model.
@@ -164,6 +169,7 @@ Example Dataset
 - Hyperparameter Tuning: Use techniques like grid search to fine-tune model hyperparameters for better results.
 
 - Explainability: Incorporate SHAP to interpret model predictions.
+
 # Conclusion
 
 This project showcases a hybrid approach combining deep learning for text data and machine learning for numeric features to predict the Risk Priority Number. The model's ability to generalize from diverse input sources makes it highly adaptable to various industrial applications.
