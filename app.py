@@ -13,7 +13,7 @@ import os
 app = FastAPI(
     title="Maintenance Issue Prediction API",
     description="Predicts time to resolve maintenance issues based on description, severity, and other features.",
-    version="2.3.0"
+    version="2.4.0"
 )
 
 # Setup logging
@@ -43,7 +43,6 @@ app.add_middleware(
 @lru_cache()
 def load_assets():
     try:
-        # Load neural network model
         model = load_model(MODEL_PATH)
         with open(SCALER_PATH, 'rb') as scaler_file:
             scaler = pickle.load(scaler_file)
@@ -71,20 +70,29 @@ def calculate_rpn(severity: int, occurrence: int, detection: int) -> int:
 
 # Generate recommendation based on severity, RPN, and downtime
 def generate_recommendation(issue: MaintenanceIssue, predicted_time: float, rpn: int) -> str:
-    if issue.severity >= 8:
+    if issue.severity >= 6:
         recommendation = "High severity issue; urgent response required."
-    elif rpn > 200:
+    elif rpn > 300:
         recommendation = "Critical issue due to high RPN; prioritize repair."
     else:
         recommendation = "Issue manageable; proceed with routine fix."
     
     # Tailor additional advice based on predicted time
-    if predicted_time > 8:
+    if predicted_time > 6:
         recommendation += " Allocate extra resources for longer repair times."
     
     return recommendation
 
-# Predict maintenance issue resolution time
+# Helper function to convert predicted time to hours or minutes
+def format_time(predicted_time: float) -> str:
+    if predicted_time < 1:
+        # Convert hours to minutes if less than 1 hour
+        minutes = predicted_time * 60
+        return f"{round(minutes, 2)} minutes"
+    else:
+        # Keep time in hours if it's 1 hour or more
+        return f"{round(predicted_time, 2)} hours"
+
 @app.post("/predict/", response_model=dict, status_code=status.HTTP_200_OK)
 async def predict_issue(issue: MaintenanceIssue):
     try:
@@ -127,8 +135,9 @@ async def predict_issue(issue: MaintenanceIssue):
         final_predicted_time = predicted_time_nn
 
         # Apply a default frequency weight since issue_frequency is removed
-        frequency_weight = 1 if issue.occurrence < 5 else 1.2
-        weighted_time = final_predicted_time * frequency_weight
+        severity_weight = 1.2 if issue.severity >= 6 else 1
+        frequency_weight = 1.1 if issue.occurrence >= 5 else 1
+        weighted_time = final_predicted_time * severity_weight * frequency_weight
 
         # Generate recommendation
         recommendation = generate_recommendation(issue, final_predicted_time, rpn)
@@ -137,17 +146,23 @@ async def predict_issue(issue: MaintenanceIssue):
         lower_bound = max(0, final_predicted_time - 0.10 * final_predicted_time)
         upper_bound = final_predicted_time + 0.10 * final_predicted_time
 
-        logger.info(f"Prediction successful: {final_predicted_time} hours")
+        # Format time (automatically convert between minutes and hours)
+        formatted_predicted_time = format_time(final_predicted_time)
+        formatted_weighted_time = format_time(weighted_time)
+        formatted_lower_bound = format_time(lower_bound)
+        formatted_upper_bound = format_time(upper_bound)
+
+        logger.info(f"Prediction successful: {formatted_predicted_time}")
 
         # Explicitly returning a JSONResponse with status code 200
         return JSONResponse(
             status_code=status.HTTP_200_OK,
             content={
                 "message": "Prediction successful",
-                "predicted_time": round(final_predicted_time, 2),
-                "lower_bound_time": round(lower_bound, 2),
-                "upper_bound_time": round(upper_bound, 2),
-                "weighted_time": round(weighted_time, 2),
+                "predicted_time": formatted_predicted_time,
+                "lower_bound_time": formatted_lower_bound,
+                "upper_bound_time": formatted_upper_bound,
+                "weighted_time": formatted_weighted_time,
                 "frequency_weight": frequency_weight,
                 "rpn": rpn,
                 "recommended_solution": recommendation
@@ -159,6 +174,7 @@ async def predict_issue(issue: MaintenanceIssue):
     except Exception as e:
         logger.error(f"Prediction error: {e}")
         raise HTTPException(status_code=500, detail="Prediction failed")
+
 
 # Startup event to load model and scaler
 @app.on_event("startup")

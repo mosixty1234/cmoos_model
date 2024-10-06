@@ -77,7 +77,7 @@ app.layout = dbc.Container(
                     dcc.Input(id='detection', type='number', min=1, max=10, value=4, style=input_style),
                     html.Label("Total Downtime (hours)", style=label_style),
                     dcc.Input(id='downtime', type='number', min=0, value=1, style=input_style),
-                    html.Label("Calculated RPN (0 to 100)", style=label_style),
+                    html.Label("Calculated RPN (1 to 1000)", style=label_style),
                     html.Div(id='calculated_rpn', style={'font-weight': 'bold', 'margin-top': '10px', 'color': 'white'}),
                     html.Button('Submit prediction', id='submit-val', n_clicks=0, style=button_style),
                 ], style=container_style),
@@ -100,6 +100,16 @@ app.layout = dbc.Container(
     style={'backgroundColor': 'black', 'minHeight': '100vh', 'color': 'white'}  # Set the overall background to black
 )
 
+# Helper function to convert predicted time to hours or minutes
+def format_time(predicted_time: float) -> str:
+    if predicted_time < 1:
+        # Convert hours to minutes if less than 1 hour
+        minutes = predicted_time * 60
+        return f"{round(minutes, 2)} minutes"
+    else:
+        # Keep time in hours if it's 1 hour or more
+        return f"{round(predicted_time, 2)} hours"
+
 @app.callback(
     [Output('calculated_rpn', 'children'),
      Output('prediction-output', 'children'),
@@ -112,7 +122,7 @@ app.layout = dbc.Container(
 def update_output(n_clicks_submit, severity, occurrence, detection, issue_desc, downtime):
     # Calculate RPN
     rpn = severity * occurrence * detection
-    rpn = max(0, min(rpn, 100))  # Cap RPN between 0 and 100
+    rpn = max(1, min(rpn, 1000))  # Cap RPN between 1 and 1000
 
     rpn_display = f"RPN = {rpn}"  # Updated display format for RPN
 
@@ -134,17 +144,33 @@ def update_output(n_clicks_submit, severity, occurrence, detection, issue_desc, 
             "detection": detection,
             "total_downtime": downtime
         }
-
+        
         try:
             response = requests.post(API_URL, json=input_data, timeout=10)
             response.raise_for_status()
             result = response.json()
 
             if 'predicted_time' in result and 'weighted_time' in result and 'recommended_solution' in result:
+                # Extract the numeric part of the predicted time and weighted time
+                predicted_time_str = result['predicted_time']
+                weighted_time_str = result['weighted_time']
+
+                # Function to extract numeric value from the string
+                def extract_time(time_str):
+                    return float(time_str.split()[0])  # Split the string and take the first part
+
+                # Convert to float before formatting
+                predicted_time_float = extract_time(predicted_time_str)
+                weighted_time_float = extract_time(weighted_time_str)
+
+                # Format times using the helper function
+                formatted_predicted_time = format_time(predicted_time_float)
+                formatted_weighted_time = format_time(weighted_time_float)
+
                 prediction_output = [
                     html.H2(f"Issue Description: {issue_desc}", style={'color': 'white'}),
-                    html.P(f"Predicted Time to Fix: {result['predicted_time']:.2f} hours", style={'color': 'white'}),
-                    html.P(f"Weighted Time: {result['weighted_time']:.2f} hours", style={'color': 'white'}),
+                    html.P(f"Predicted Time to Fix: {formatted_predicted_time}", style={'color': 'white'}),
+                    html.P(f"Weighted Time: {formatted_weighted_time}", style={'color': 'white'}),
                     html.P(f"Recommendation: {result['recommended_solution']}", style={'color': 'white'})
                 ]
 
@@ -163,19 +189,20 @@ def update_output(n_clicks_submit, severity, occurrence, detection, issue_desc, 
                     xaxis_title="Issue Type",
                     yaxis_title="Number of Occurrences",
                     plot_bgcolor="rgba(240, 240, 240, 0.8)",
-                    paper_bgcolor="rgba(240, 240, 240, 0.8)"
+                    paper_bgcolor="rgba(240, 240, 240, 0.8)",
+                    font=dict(color="black")
                 )
 
-                fig.update_traces(marker_line_color='black', marker_line_width=1.5, textfont_color='black')
-                fig.update_xaxes(showgrid=True, gridcolor='lightgrey')
-                fig.update_yaxes(showgrid=True, gridcolor='lightgrey')
-
-                return rpn_display, prediction_output, fig, "Prediction successful!"
+                return rpn_display, prediction_output, fig, ""
+            else:
+                logger.error(f"Unexpected response structure: {result}")
+                return rpn_display, ["Error: Unexpected response from API"], {}, "API response format is not as expected."
+        
         except requests.exceptions.RequestException as e:
-            logger.error(f"Error during prediction request: {str(e)}")
-            return rpn_display, ["Error: Failed to get prediction"], {}, "Error: Unable to reach prediction API."
+            logger.error(f"API request failed: {e}")
+            return rpn_display, ["Error: API request failed"], {}, "Please check your API server."
 
     return rpn_display, "", {}, ""
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8050)
+    app.run_server(debug=True)

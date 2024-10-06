@@ -452,3 +452,107 @@
 2024-10-05 01:57:34,616 - INFO - User submitted issue: Motor Failure, Severity: 8, Occurrence: 4, Detection: 7, Downtime: 0, RPN: 100
 2024-10-05 01:57:34,618 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
 2024-10-05 01:57:34,704 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 229
+2024-10-06 14:39:54,266 - ERROR - Local model file not found. Please ensure 'rpn_prediction_model.pkl' exists.
+2024-10-06 14:39:54,657 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-06 14:39:56,892 - ERROR - Local model file not found. Please ensure 'rpn_prediction_model.pkl' exists.
+2024-10-06 14:40:12,863 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-06 14:40:12,874 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 14:40:12,881 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 148
+2024-10-06 14:40:12,882 - ERROR - API Request failed: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-06 14:43:34,893 - ERROR - Local model file not found. Please ensure 'rpn_prediction_model.pkl' exists.
+2024-10-06 14:43:48,805 - ERROR - Local model file not found. Please ensure 'rpn_prediction_model.pkl' exists.
+2024-10-06 14:43:48,836 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-06 14:43:51,463 - ERROR - Local model file not found. Please ensure 'rpn_prediction_model.pkl' exists.
+2024-10-06 14:44:10,258 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-06 14:44:10,261 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 14:44:10,269 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 148
+2024-10-06 14:44:10,270 - ERROR - API Request failed: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-06 14:44:11,491 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-06 14:44:11,492 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 14:44:11,495 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 422 148
+2024-10-06 14:44:11,495 - ERROR - API Request failed: 422 Client Error: Unprocessable Entity for url: http://127.0.0.1:8000/predict/
+2024-10-06 14:51:26,749 - ERROR - Local model file not found. Please ensure 'rpn_prediction_model.pkl' exists.
+2024-10-06 14:51:35,112 - ERROR - Local model file not found. Please ensure 'rpn_prediction_model.pkl' exists.
+2024-10-06 14:52:29,700 - ERROR - Local model file not found. Please ensure 'rpn_prediction_model.pkl' exists.
+2024-10-06 14:52:29,716 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-06 14:52:32,046 - ERROR - Local model file not found. Please ensure 'rpn_prediction_model.pkl' exists.
+2024-10-06 14:52:46,692 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-06 14:52:46,695 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 14:52:47,530 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 225
+2024-10-06 14:57:47,635 - ERROR - Local model file not found. Please ensure 'rpn_prediction_model.pkl' exists.
+2024-10-06 14:59:07,179 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-06 14:59:28,421 - INFO - User submitted issue: Motor, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-06 14:59:28,426 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 14:59:28,869 - INFO - User submitted issue: Motor, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-06 14:59:28,870 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 14:59:29,453 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 225
+2024-10-06 14:59:29,536 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 225
+2024-10-06 15:04:41,450 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-06 15:04:56,015 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-06 15:04:56,018 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 15:04:56,798 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 245
+2024-10-06 15:05:24,974 - INFO - User submitted issue: Motor Failure, Severity: 8, Occurrence: 4, Detection: 2, Downtime: 4, RPN: 64
+2024-10-06 15:05:24,975 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 15:05:25,075 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 250
+2024-10-06 15:11:29,070 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-06 15:11:38,198 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-06 15:11:38,202 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 15:11:39,010 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 245
+2024-10-06 15:11:55,160 - INFO - User submitted issue: Motor Failure, Severity: 7, Occurrence: 5, Detection: 9, Downtime: 1, RPN: 100
+2024-10-06 15:11:55,161 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 15:11:55,254 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 252
+2024-10-06 15:11:55,578 - INFO - User submitted issue: Motor Failure, Severity: 7, Occurrence: 5, Detection: 9, Downtime: 1, RPN: 100
+2024-10-06 15:11:55,580 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 15:11:55,667 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 252
+2024-10-06 15:12:17,372 - INFO - User submitted issue: Motor Failure, Severity: 7, Occurrence: 5, Detection: 1, Downtime: 1, RPN: 35
+2024-10-06 15:12:17,374 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 15:12:17,466 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 252
+2024-10-06 15:24:35,429 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-06 15:24:56,668 - INFO - User submitted issue: Motor Failure, Severity: 6, Occurrence: 7, Detection: 2, Downtime: 1, RPN: 84
+2024-10-06 15:24:56,671 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 15:24:57,417 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 500 30
+2024-10-06 15:24:57,417 - ERROR - Error during prediction request: 500 Server Error: Internal Server Error for url: http://127.0.0.1:8000/predict/
+2024-10-06 15:32:40,963 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-06 15:32:40,969 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 15:32:41,668 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 245
+2024-10-06 15:42:34,367 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-06 15:48:18,213 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-06 15:48:28,459 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-06 15:48:28,465 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 15:48:29,377 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 268
+2024-10-06 15:54:53,647 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-06 15:55:10,360 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-06 15:55:10,363 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 15:55:10,444 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 268
+2024-10-06 15:55:12,083 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-06 15:55:12,084 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 15:55:12,227 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 268
+2024-10-06 15:57:50,904 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-06 15:58:12,578 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-06 15:58:12,581 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 15:58:12,665 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 268
+2024-10-06 15:58:51,753 - INFO - User submitted issue: Motor Failure, Severity: 8, Occurrence: 4, Detection: 4, Downtime: 0.5, RPN: 128
+2024-10-06 15:58:51,754 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 15:58:51,827 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 269
+2024-10-06 16:03:57,143 - INFO - Dash is running on http://127.0.0.1:8050/
+
+2024-10-06 16:04:13,288 - INFO - User submitted issue: Motor Failure, Severity: 4, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 64
+2024-10-06 16:04:13,298 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 16:04:13,441 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 268
+2024-10-06 16:04:31,954 - INFO - User submitted issue: Motor Failure, Severity: 8, Occurrence: 4, Detection: 4, Downtime: 1, RPN: 128
+2024-10-06 16:04:31,955 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 16:04:32,039 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 269
+2024-10-06 16:06:15,607 - INFO - User submitted issue: Pump impeller worn out, Severity: 3, Occurrence: 8, Detection: 2, Downtime: 15, RPN: 48
+2024-10-06 16:06:15,610 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8000
+2024-10-06 16:06:15,775 - DEBUG - http://127.0.0.1:8000 "POST /predict/ HTTP/11" 200 271

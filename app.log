@@ -692,3 +692,105 @@
 2024-10-05 01:57:34,688 - app - INFO - Prediction successful: 0.27827566862106323 hours
 2024-10-05 15:42:09,438 - app - INFO - Model, scaler, and TFIDF loaded successfully.
 2024-10-05 15:42:09,454 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 14:39:30,387 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 14:39:30,402 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 14:43:59,506 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 14:43:59,506 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 14:52:14,446 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 14:52:14,446 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 14:52:28,216 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 14:52:28,216 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 14:52:46,701 - app - INFO - Processing issue: Motor Failure
+2024-10-06 14:52:46,701 - app - INFO - Calculated RPN: 64
+2024-10-06 14:52:47,530 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 4, 'occurrence': 4, 'detection': 4}, Neural Net Prediction: 0.32
+2024-10-06 14:52:47,530 - app - INFO - Prediction successful: 0.32426804304122925 hours
+2024-10-06 14:58:49,380 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 14:58:49,380 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 14:59:04,257 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 14:59:04,257 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 14:59:28,433 - app - INFO - Processing issue: Motor
+2024-10-06 14:59:28,434 - app - INFO - Calculated RPN: 64
+2024-10-06 14:59:29,453 - app - INFO - Input: {'description': 'Motor', 'severity': 4, 'occurrence': 4, 'detection': 4}, Neural Net Prediction: 0.32
+2024-10-06 14:59:29,453 - app - INFO - Prediction successful: 0.32396453619003296 hours
+2024-10-06 14:59:29,453 - app - INFO - Processing issue: Motor
+2024-10-06 14:59:29,453 - app - INFO - Calculated RPN: 64
+2024-10-06 14:59:29,536 - app - INFO - Input: {'description': 'Motor', 'severity': 4, 'occurrence': 4, 'detection': 4}, Neural Net Prediction: 0.32
+2024-10-06 14:59:29,536 - app - INFO - Prediction successful: 0.32396453619003296 hours
+2024-10-06 15:04:25,992 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:04:25,992 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:04:48,459 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:04:48,459 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:04:56,023 - app - INFO - Processing issue: Motor Failure
+2024-10-06 15:04:56,023 - app - INFO - Calculated RPN: 64
+2024-10-06 15:04:56,798 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 4, 'occurrence': 4, 'detection': 4}, Neural Net Prediction: 0.32
+2024-10-06 15:04:56,798 - app - INFO - Prediction successful: 0.32426804304122925 hours
+2024-10-06 15:05:24,978 - app - INFO - Processing issue: Motor Failure
+2024-10-06 15:05:24,978 - app - INFO - Calculated RPN: 64
+2024-10-06 15:05:25,060 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 8, 'occurrence': 4, 'detection': 2}, Neural Net Prediction: 0.29
+2024-10-06 15:05:25,060 - app - INFO - Prediction successful: 0.2857813239097595 hours
+2024-10-06 15:11:22,489 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:11:22,489 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:11:38,208 - app - INFO - Processing issue: Motor Failure
+2024-10-06 15:11:38,208 - app - INFO - Calculated RPN: 64
+2024-10-06 15:11:39,010 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 4, 'occurrence': 4, 'detection': 4}, Neural Net Prediction: 0.32
+2024-10-06 15:11:39,010 - app - INFO - Prediction successful: 0.32426804304122925 hours
+2024-10-06 15:11:55,163 - app - INFO - Processing issue: Motor Failure
+2024-10-06 15:11:55,163 - app - INFO - Calculated RPN: 315
+2024-10-06 15:11:55,254 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 7, 'occurrence': 5, 'detection': 9}, Neural Net Prediction: -0.20
+2024-10-06 15:11:55,254 - app - INFO - Prediction successful: -0.19854485988616943 hours
+2024-10-06 15:11:55,581 - app - INFO - Processing issue: Motor Failure
+2024-10-06 15:11:55,581 - app - INFO - Calculated RPN: 315
+2024-10-06 15:11:55,667 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 7, 'occurrence': 5, 'detection': 9}, Neural Net Prediction: -0.20
+2024-10-06 15:11:55,667 - app - INFO - Prediction successful: -0.19854485988616943 hours
+2024-10-06 15:12:17,375 - app - INFO - Processing issue: Motor Failure
+2024-10-06 15:12:17,376 - app - INFO - Calculated RPN: 35
+2024-10-06 15:12:17,466 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 7, 'occurrence': 5, 'detection': 1}, Neural Net Prediction: 0.39
+2024-10-06 15:12:17,466 - app - INFO - Prediction successful: 0.3922220468521118 hours
+2024-10-06 15:13:37,528 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:13:37,528 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:17:26,180 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:17:26,180 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:24:16,893 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:24:16,893 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:24:30,257 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:24:30,257 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:24:56,677 - app - INFO - Processing issue: Motor Failure
+2024-10-06 15:24:56,677 - app - INFO - Calculated RPN: 84
+2024-10-06 15:24:57,417 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 6, 'occurrence': 7, 'detection': 2}, Neural Net Prediction: 0.23
+2024-10-06 15:24:57,417 - app - ERROR - Prediction error: name 'rpm_weight' is not defined
+2024-10-06 15:29:50,374 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:29:50,374 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:32:40,975 - app - INFO - Processing issue: Motor Failure
+2024-10-06 15:32:40,975 - app - INFO - Calculated RPN: 64
+2024-10-06 15:32:41,668 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 4, 'occurrence': 4, 'detection': 4}, Neural Net Prediction: 0.32
+2024-10-06 15:32:41,668 - app - INFO - Prediction successful: 0.32426804304122925 hours
+2024-10-06 15:45:33,530 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:45:33,530 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:48:10,946 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:48:10,946 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:48:28,474 - app - INFO - Processing issue: Motor Failure
+2024-10-06 15:48:28,474 - app - INFO - Calculated RPN: 64
+2024-10-06 15:48:29,377 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 4, 'occurrence': 4, 'detection': 4}, Neural Net Prediction: 0.32
+2024-10-06 15:48:29,377 - app - INFO - Prediction successful: 19.46 minutes
+2024-10-06 15:54:12,341 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:54:12,341 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:54:49,959 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:54:49,959 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:55:10,365 - app - INFO - Processing issue: Motor Failure
+2024-10-06 15:55:10,365 - app - INFO - Calculated RPN: 64
+2024-10-06 15:55:10,444 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 4, 'occurrence': 4, 'detection': 4}, Neural Net Prediction: 0.32
+2024-10-06 15:55:10,444 - app - INFO - Prediction successful: 19.46 minutes
+2024-10-06 15:55:12,086 - app - INFO - Processing issue: Motor Failure
+2024-10-06 15:55:12,086 - app - INFO - Calculated RPN: 64
+2024-10-06 15:55:12,227 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 4, 'occurrence': 4, 'detection': 4}, Neural Net Prediction: 0.32
+2024-10-06 15:55:12,227 - app - INFO - Prediction successful: 19.46 minutes
+2024-10-06 15:58:05,442 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:58:05,442 - app - INFO - Model, scaler, and TFIDF loaded successfully.
+2024-10-06 15:58:12,582 - app - INFO - Processing issue: Motor Failure
+2024-10-06 15:58:12,583 - app - INFO - Calculated RPN: 64
+2024-10-06 15:58:12,665 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 4, 'occurrence': 4, 'detection': 4}, Neural Net Prediction: 0.32
+2024-10-06 15:58:12,665 - app - INFO - Prediction successful: 19.46 minutes
+2024-10-06 15:58:51,756 - app - INFO - Processing issue: Motor Failure
+2024-10-06 15:58:51,756 - app - INFO - Calculated RPN: 128
+2024-10-06 15:58:51,827 - app - INFO - Input: {'description': 'Motor Failure', 'severity': 8, 'occurrence': 4, 'detection': 4}, Neural Net Prediction: 0.04
+2024-10-06 15:58:51,827 - app - INFO - Prediction successful: 2.15 minutes
