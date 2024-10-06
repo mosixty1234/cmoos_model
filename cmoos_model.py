@@ -271,7 +271,7 @@ rpn = df['RPN'].values
 
 #Split the dataset into training and testing sets to validate the model's performance on unseen data.
 X_train_text, X_test_text, X_train_num, X_test_num, y_train, y_test = train_test_split(
-    X_text_seq, numeric_features_scaled, df['RPN'].values, test_size=0.3, random_state=42
+    X_text_seq, numeric_features_scaled, df['RPN'].values, test_size=0.5, random_state=42
 )
 
 # Define the architecture of the model, combining text input and numerical features through a series of layers
@@ -286,11 +286,11 @@ concat_layer = concatenate([gru_layer, numeric_input])
 # Implement dropout and batch normalization to improve model generalization and prevent overfitting
 dense_1 = Dense(256, activation='relu', kernel_regularizer=l2(0.001))(concat_layer)
 batch_norm_1 = BatchNormalization()(dense_1)
-dropout_1 = Dropout(0.4)(batch_norm_1)
+dropout_1 = Dropout(0.5)(batch_norm_1)
 
 dense_2 = Dense(128, activation='relu', kernel_regularizer=l2(0.001))(dropout_1)
 batch_norm_2 = BatchNormalization()(dense_2)
-dropout_2 = Dropout(0.4)(batch_norm_2)
+dropout_2 = Dropout(0.5)(batch_norm_2)
 
 dense_3 = Dense(64, activation='relu', kernel_regularizer=l2(0.001))(dropout_2)
 output_layer = Dense(1)(dense_3)
@@ -313,7 +313,7 @@ lr_scheduler = LearningRateScheduler(step_decay)
 #Define callbacks to save the best model and reduce the learning rate based on validation performance
 callbacks = [
     ModelCheckpoint('issue_predictor_model.keras', save_best_only=True, monitor='val_loss'),
-    ReduceLROnPlateau(factor=0.2, patience=5, min_lr=1e-6),
+    ReduceLROnPlateau(factor=0.2, patience=5, min_lr=1e-05),
     lr_scheduler
 ]
 
@@ -322,7 +322,7 @@ history = model.fit(
     [X_train_text, X_train_num],
     y_train,
     validation_data=([X_test_text, X_test_num], y_test),
-    epochs=50,
+    epochs=100,
     batch_size=32,
     callbacks=callbacks,
     shuffle=True,
